@@ -97,5 +97,5 @@ markdown:
 ## Docs: http://zespia.tw/hexo/docs/deployment.html
 deploy:
   type: github
-  repository: git@github.com:yjdreams4it/mikiyonney.github.io.git
+  repository: git@github.com:MiKiYonney/mikiyonney.github.io.git
   branch: master
