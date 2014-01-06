@@ -76,7 +76,11 @@
 }
 
 #fancybox-loading, .fancybox-close, .fancybox-prev span, .fancybox-next span {
+<<<<<<< HEAD
 	background-image: url('fancybox_sprite.png');
+=======
+	background-image: url(fancybox_sprite.png);
+>>>>>>> c625e98880b704c0093ba7409f5a1602edcb2365
 }
 
 #fancybox-loading {
@@ -94,7 +98,11 @@
 #fancybox-loading div {
 	width: 44px;
 	height: 44px;
+<<<<<<< HEAD
 	background: url('fancybox_loading.gif') center center no-repeat;
+=======
+	background: url(fancybox_loading.gif) center center no-repeat;
+>>>>>>> c625e98880b704c0093ba7409f5a1602edcb2365
 }
 
 .fancybox-close {
@@ -114,7 +122,11 @@
 	height: 100%;
 	cursor: pointer;
 	text-decoration: none;
+<<<<<<< HEAD
 	background: transparent url('blank.gif'); /* helps IE */
+=======
+	background: transparent url(blank.gif); /* helps IE */
+>>>>>>> c625e98880b704c0093ba7409f5a1602edcb2365
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
 	z-index: 8040;
 }
@@ -156,7 +168,10 @@
 	position: absolute;
 	top: -99999px;
 	left: -99999px;
+<<<<<<< HEAD
 	visibility: hidden;
+=======
+>>>>>>> c625e98880b704c0093ba7409f5a1602edcb2365
 	max-width: 99999px;
 	max-height: 99999px;
 	overflow: visible !important;
@@ -165,7 +180,11 @@
 /* Overlay helper */
 
 .fancybox-lock {
+<<<<<<< HEAD
     overflow: hidden !important;
+=======
+    overflow: visible !important;
+>>>>>>> c625e98880b704c0093ba7409f5a1602edcb2365
     width: auto;
 }
 
@@ -184,7 +203,11 @@
 	overflow: hidden;
 	display: none;
 	z-index: 8010;
+<<<<<<< HEAD
 	background: url('fancybox_overlay.png');
+=======
+	background: url(fancybox_overlay.png);
+>>>>>>> c625e98880b704c0093ba7409f5a1602edcb2365
 }
 
 .fancybox-overlay-fixed {
@@ -263,12 +286,20 @@
 	   only screen and (min-device-pixel-ratio: 1.5){
 
 	#fancybox-loading, .fancybox-close, .fancybox-prev span, .fancybox-next span {
+<<<<<<< HEAD
 		background-image: url('fancybox_sprite@2x.png');
+=======
+		background-image: url(fancybox_sprite@2x.png);
+>>>>>>> c625e98880b704c0093ba7409f5a1602edcb2365
 		background-size: 44px 152px; /*The size of the normal image, half the size of the hi-res image*/
 	}
 
 	#fancybox-loading div {
+<<<<<<< HEAD
 		background-image: url('fancybox_loading@2x.gif');
+=======
+		background-image: url(fancybox_loading@2x.gif);
+>>>>>>> c625e98880b704c0093ba7409f5a1602edcb2365
 		background-size: 24px 24px; /*The size of the normal image, half the size of the hi-res image*/
 	}
 }
