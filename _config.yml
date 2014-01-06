@@ -3,7 +3,6 @@
 ## Source: https://github.com/tommy351/hexo/
 
 # Site
-<<<<<<< HEAD
 title: Yonney's Blog
 subtitle: 越努力才会越幸运 	
 description: 
@@ -14,18 +13,6 @@ language:
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: http://mikiyonney.github.io/
-=======
-title: Hexo
-subtitle:
-description:
-author: John Doe
-email:
-language:
-
-# URL
-## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
->>>>>>> c625e98880b704c0093ba7409f5a1602edcb2365
 root: /
 permalink: :year/:month/:day/:title/
 tag_dir: tags
@@ -62,15 +49,9 @@ tag_map:
 ## 2: Enable pagination
 ## 1: Disable pagination
 ## 0: Fully Disable
-<<<<<<< HEAD
 archive: 1
 category: 1
 tag: 1
-=======
-archive: 2
-category: 2
-tag: 2
->>>>>>> c625e98880b704c0093ba7409f5a1602edcb2365
 
 # Server
 ## Hexo uses Connect as a server
@@ -87,30 +68,18 @@ logger_format:
 date_format: MMM D YYYY
 time_format: H:mm:ss
 
-<<<<<<< HEAD
 # Pagination 
-=======
-# Pagination
->>>>>>> c625e98880b704c0093ba7409f5a1602edcb2365
 ## Set per_page to 0 to disable pagination
 per_page: 10
 pagination_dir: page
 
 # Disqus
-<<<<<<< HEAD
 disqus_shortname: MiKiYonney
-=======
-disqus_shortname:
->>>>>>> c625e98880b704c0093ba7409f5a1602edcb2365
 
 # Extensions
 ## Plugins: https://github.com/tommy351/hexo/wiki/Plugins
 ## Themes: https://github.com/tommy351/hexo/wiki/Themes
-<<<<<<< HEAD
 theme: hexo-theme-tyrant
-=======
-theme: landscape
->>>>>>> c625e98880b704c0093ba7409f5a1602edcb2365
 exclude_generator:
 
 # Markdown
@@ -129,8 +98,4 @@ markdown:
 deploy:
   type: github
   repository: git@github.com:MiKiYonney/mikiyonney.github.io.git
-<<<<<<< HEAD
   branch: master
-=======
-  branch: master
->>>>>>> c625e98880b704c0093ba7409f5a1602edcb2365
