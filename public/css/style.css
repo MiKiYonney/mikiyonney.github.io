@@ -146,7 +146,7 @@ a:hover {
 article {
   -webkit-box-shadow: 1px 2px 3px #ddd;
   box-shadow: 1px 2px 3px #ddd;
-  background: #f6f7f9;
+  background: #fff;
 }
 article.page {
   padding-left: 20px;
@@ -551,7 +551,7 @@ article footer .addthis iframe {
   }
 }
 #sidebar .widget {
-  background: #f6f7f9;
+  background: #fff;
   -webkit-box-shadow: 1px 2px 3px #ddd;
   box-shadow: 1px 2px 3px #ddd;
   margin-bottom: 30px;
