@@ -76,6 +76,11 @@ pagination_dir: page
 # Disqus
 disqus_shortname: MiKiYonney
 
+#plugins
+plugins:
+- hexo-generator-feed
+
+
 # Extensions
 ## Plugins: https://github.com/tommy351/hexo/wiki/Plugins
 ## Themes: https://github.com/tommy351/hexo/wiki/Themes
