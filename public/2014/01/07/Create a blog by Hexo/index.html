@@ -83,28 +83,26 @@
 <p><strong>Step2: <a href="http://nodejs.org/" target="_blank">install Node.js</a></strong></p>
 <p><strong>Step3: <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a></strong></p>
 <ul>
-<li><p>Install:   $ npm install hexo -g</p>
-</li>
-<li><p>SetUp:     $ hexo init blog &amp;&amp; cd blog</p>
-</li>
-<li><p>Generate:  $ hexo generate     </p>
-</li>
-<li><p>Server:    $ hexo server</p>
-</li>
+<li>Install:   $ npm install hexo -g </li>
+<li>SetUp:     $ hexo init blog &amp;&amp; cd blog</li>
+<li>Generate:  $ hexo generate     </li>
+<li>Server:    $ hexo server</li>
 </ul>
-<p>这时你可以 visit <a href="http://localhost:4000.看看效果了。" target="_blank">http://localhost:4000.看看效果了。</a></p>
+<p>这时你可以 visit <a href="http://localhost:4000" target="_blank">http://localhost:4000</a>.看看效果了。</p>
 <p><strong>Step4: </strong></p>
-<p>登录<a href="https://github.com/" target="_blank">github</a>,new repositories，建立一个新的repository，repository的名字账号名对应，账号名.github.io,如mikiyonney.github.io</p>
-<p>生成SSH Keys，参考<a href="https://help.github.com/articles/generating-ssh-keys" target="_blank">SSH Generate</a></p>
+<p>登录<a href="https://github.com/" target="_blank">github</a>,new repositories，建立一个新的repository，repository的名字账号名对应，账号名.github.io,如mikiyonney.github.io<br>生成SSH Keys，参考<a href="https://help.github.com/articles/generating-ssh-keys" target="_blank">SSH Generate</a></p>
 <p><strong>Step5: 编辑E:\blog目录下_config.yml文件：</strong></p>
-<pre><code><span class="label">deploy:</span>
-
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+</pre></td><td class="code"><pre><span class="label">deploy:</span>
 <span class="label">type:</span> github
-
 <span class="label">repository:</span> git@github<span class="preprocessor">.com</span>:MiKiYonney/mikiyonney<span class="preprocessor">.github</span><span class="preprocessor">.io</span><span class="preprocessor">.git</span>
-
 <span class="label">branch:</span> master
-</code></pre><p>修改完本地文件后，用hexo generate 生成与保存（Hexo命令在E:\blog目录下执行）,然后hexo deploy部署，这样如果一路没出错的话，你就可以happy的直接访问mikiyonney.github.io看你的blog了。</p>
+</pre></td></tr></table></figure>
+
+<p>修改完本地文件后，用hexo generate 生成与保存（Hexo命令在E:\blog目录下执行）,然后hexo deploy部署，这样如果一路没出错的话，你就可以happy的直接访问mikiyonney.github.io看你的blog了。</p>
 <p><strong>Step6: 学习MarkDown，写第一篇blog</strong></p>
 <p>我大致是参考的学习文档如下：</p>
 <p><a href="http://zipperary.com/2013/05/22/introduction-to-markdown/" target="_blank">MarkDown指南</a></p>
@@ -118,18 +116,27 @@
 <li><p>$ hexo clean  —Cleans the cache file (db.json) and generated files (public).</p>
 </li>
 <li><p>Deploy</p>
-<p>   $ hexo generate —watch</p>
-<p>   $ hexo deploy —generate</p>
 </li>
 </ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="comment">hexo</span> <span class="comment">generate</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">watch</span>
+<span class="comment">hexo</span> <span class="comment">deploy</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">generate</span>
+</pre></td></tr></table></figure>
+
 <ul>
-<li><p>hexo alias：</p>
-<p>  hexo g == hexo generate      </p>
-<p>  hexo d == hexo deploy</p>
-<p>  hexo s == hexo server</p>
-<p>  hexo n == hexo new</p>
-</li>
+<li>hexo alias：</li>
 </ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+</pre></td><td class="code"><pre><span class="title">hexo</span> g == hexo generate
+<span class="title">hexo</span> d == hexo deploy
+<span class="title">hexo</span> s == hexo server
+<span class="title">hexo</span> n == hexo new
+</pre></td></tr></table></figure>
+
 <p><strong>其他参考</strong></p>
 <ul>
 <li><p><a href="http://yangjian.me/workspace/building-blog-with-hexo/" target="_blank">使用hexo搭建博客</a></p>

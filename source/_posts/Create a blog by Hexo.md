@@ -15,32 +15,25 @@ categories: hexo
 
 **Step3: [Hexo](http://zespia.tw/hexo/)**
 
-- Install:   $ npm install hexo -g
-
+- Install:   $ npm install hexo -g 
 - SetUp:     $ hexo init blog && cd blog
-
 - Generate:  $ hexo generate     
-
 - Server:    $ hexo server
 
-这时你可以 visit http://localhost:4000.看看效果了。
+这时你可以 visit <http://localhost:4000>.看看效果了。
 
 **Step4: **
 
-登录[github](https://github.com/),new repositories，建立一个新的repository，repository的名字账号名对应，账号名.github.io,如mikiyonney.github.io
- 
+登录[github](https://github.com/),new repositories，建立一个新的repository，repository的名字账号名对应，账号名.github.io,如mikiyonney.github.io              
 生成SSH Keys，参考[SSH Generate](https://help.github.com/articles/generating-ssh-keys)
 
 **Step5: 编辑E:\blog目录下_config.yml文件：**
-
-	deploy:
-	
-    type: github
-
-    repository: git@github.com:MiKiYonney/mikiyonney.github.io.git
-
-    branch: master
-
+```
+deploy:
+type: github
+repository: git@github.com:MiKiYonney/mikiyonney.github.io.git
+branch: master
+```
 修改完本地文件后，用hexo generate 生成与保存（Hexo命令在E:\blog目录下执行）,然后hexo deploy部署，这样如果一路没出错的话，你就可以happy的直接访问mikiyonney.github.io看你的blog了。
 	
 **Step6: 学习MarkDown，写第一篇blog**
@@ -62,21 +55,20 @@ categories: hexo
 - $ hexo clean  --Cleans the cache file (db.json) and generated files (public).
 
 - Deploy
- 
-     $ hexo generate --watch
 
-     $ hexo deploy --generate
-
+```
+hexo generate --watch
+hexo deploy --generate
+```
 
 - hexo alias：
 
-	hexo g == hexo generate      
-
-	hexo d == hexo deploy
-
-	hexo s == hexo server
-
-	hexo n == hexo new
+```
+hexo g == hexo generate
+hexo d == hexo deploy
+hexo s == hexo server
+hexo n == hexo new
+```
 
 **其他参考**
 
