@@ -1,7 +1,7 @@
 title: Build a blog by Hexo && Node.js
 date: 2014-01-07 15:37:42
 tags: [hexo,node.js]
-categories: hexo
+categories: Hexo
 ---
 
 ##用hexo+node.js搭建blog
