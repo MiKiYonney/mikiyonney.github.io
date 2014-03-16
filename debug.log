@@ -1,0 +1,98 @@
+date: 2014-03-16 15:21:41.270
+argv: d:\Program Files\nodejs\node.exe c:\Users\yonney\AppData\Roaming\npm\node_modules\hexo\bin\hexo generate
+os: Windows_NT 6.1.7601 win32 x64
+version:
+  hexo: 2.5.2
+  http_parser: 1.0
+  node: 0.10.24
+  v8: 3.14.5.9
+  ares: 1.9.0-DEV
+  uv: 0.10.21
+  zlib: 1.2.3
+  modules: 11
+  openssl: 1.0.1e
+---
+
+[debug] 15:21:40.408 Config file loaded
+[debug] 15:21:40.411 Version info checked successfully
+[debug] 15:21:40.466 Loading database.
+[debug] 15:21:41.191 Processed: _posts/Create-a-blog-by-Hexo.md
+[debug] 15:21:41.191 Processed: _posts/android-cloud-emulator.md
+[debug] 15:21:41.192 Processed: LICENSE
+[debug] 15:21:41.192 Processed: README.md
+[debug] 15:21:41.226 Processed: source/css/_base/layout.styl
+[debug] 15:21:41.227 Processed: source/css/_base/utils.styl
+[debug] 15:21:41.227 Processed: source/css/_base/variable.styl
+[debug] 15:21:41.227 Processed: source/css/_partial/archive.styl
+[debug] 15:21:41.227 Processed: source/css/_partial/article.styl
+[debug] 15:21:41.227 Processed: source/css/_partial/comment.styl
+[debug] 15:21:41.227 Processed: source/css/_partial/footer.styl
+[debug] 15:21:41.227 Processed: source/css/_partial/header.styl
+[debug] 15:21:41.227 Processed: source/css/_partial/index.styl
+[debug] 15:21:41.227 Processed: source/css/_partial/sidebar.styl
+[debug] 15:21:41.227 Processed: source/css/_partial/syntax.styl
+[debug] 15:21:41.234 Processed: _posts/migration-of-my-old-blog.md
+[debug] 15:21:41.235 Processed: source/fancybox/blank.gif
+[debug] 15:21:41.236 Processed: source/fancybox/fancybox_loading.gif
+[debug] 15:21:41.236 Processed: source/fancybox/fancybox_loading@2x.gif
+[debug] 15:21:41.237 Processed: source/fancybox/fancybox_overlay.png
+[debug] 15:21:41.237 Processed: source/fancybox/fancybox_sprite.png
+[debug] 15:21:41.238 Processed: source/fancybox/fancybox_sprite@2x.png
+[debug] 15:21:41.239 Processed: source/fancybox/jquery.fancybox.css
+[debug] 15:21:41.240 Processed: source/fancybox/jquery.fancybox.pack.js
+[debug] 15:21:41.241 Processed: source/js/gallery.js
+[debug] 15:21:41.241 Processed: source/js/jquery.imagesloaded.min.js
+[debug] 15:21:41.243 Processed: source/css/style.styl
+[debug] 15:21:41.243 Processed: source/css/font/fontawesome-webfont.eot
+[debug] 15:21:41.244 Processed: source/css/font/fontawesome-webfont.svg
+[debug] 15:21:41.245 Processed: source/css/font/fontawesome-webfont.ttf
+[debug] 15:21:41.246 Processed: source/css/font/fontawesome-webfont.woff
+[debug] 15:21:41.248 Processed: layout/archive.ejs
+[debug] 15:21:41.248 Processed: layout/category.ejs
+[debug] 15:21:41.248 Processed: layout/index.ejs
+[debug] 15:21:41.248 Processed: layout/layout.ejs
+[debug] 15:21:41.248 Processed: layout/page.ejs
+[debug] 15:21:41.248 Processed: layout/post.ejs
+[debug] 15:21:41.248 Processed: layout/tag.ejs
+[debug] 15:21:41.248 Processed: layout/_widget/category.ejs
+[debug] 15:21:41.248 Processed: layout/_widget/links.ejs
+[debug] 15:21:41.248 Processed: layout/_widget/recent_posts.ejs
+[debug] 15:21:41.248 Processed: layout/_widget/search.ejs
+[debug] 15:21:41.248 Processed: layout/_widget/tag.ejs
+[debug] 15:21:41.248 Processed: layout/_widget/tagcloud.ejs
+[debug] 15:21:41.249 Processed: layout/_widget/weibo.ejs
+[debug] 15:21:41.249 Processed: layout/_partial/after_footer.ejs
+[debug] 15:21:41.249 Processed: layout/_partial/archive.ejs
+[debug] 15:21:41.249 Processed: layout/_partial/article.ejs
+[debug] 15:21:41.249 Processed: layout/_partial/comment.ejs
+[debug] 15:21:41.249 Processed: layout/_partial/facebook_comment.ejs
+[debug] 15:21:41.249 Processed: layout/_partial/footer.ejs
+[debug] 15:21:41.249 Processed: layout/_partial/google_analytics.ejs
+[debug] 15:21:41.249 Processed: layout/_partial/head.ejs
+[debug] 15:21:41.249 Processed: layout/_partial/header.ejs
+[debug] 15:21:41.249 Processed: layout/_partial/pagination.ejs
+[debug] 15:21:41.249 Processed: layout/_partial/sidebar.ejs
+[debug] 15:21:41.249 Processed: layout/_partial/post/category.ejs
+[debug] 15:21:41.249 Processed: layout/_partial/post/gallery.ejs
+[debug] 15:21:41.249 Processed: layout/_partial/post/share.ejs
+[debug] 15:21:41.249 Processed: layout/_partial/post/tag.ejs
+[debug] 15:21:41.249 Processed: layout/_partial/post/title.ejs
+[error] 15:21:41.252 { rawMessage: 'Unable to parse.',
+  parsedLine: 5,
+  snippet: '--',
+  parsedFile: null,
+  message: 'Unable to parse.',
+  domain: 
+   { domain: null,
+     _events: { error: [Function] },
+     _maxListeners: 10,
+     members: [],
+     _disposed: true },
+  domainThrown: true }
+[debug] 15:21:41.264 Theme config loaded
+[debug] 15:21:41.264 Processed: _config.yml
+[debug] 15:21:41.266 Processed: languages/de.yml
+[debug] 15:21:41.267 Processed: languages/default.yml
+[debug] 15:21:41.268 Processed: languages/ru.yml
+[debug] 15:21:41.269 Processed: languages/zh-CN.yml
+[debug] 15:21:41.270 Processed: languages/zh-TW.yml
