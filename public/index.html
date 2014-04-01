@@ -63,6 +63,55 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2014-04-01T09:58:16.000Z"><a href="/2014/04/01/summary-of-develop-errors-/">Apr 1 2014</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/04/01/summary-of-develop-errors-/">Summary of develop Errors</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="在开发过程中常见的错误总结（定期更新）">在开发过程中常见的错误总结（定期更新）</h2>
+<h4 id="1-hibernate配置文件中大小写问题">1.hibernate配置文件中大小写问题</h4>
+<p>遇到过两次，在windows下项目能够正常启动, 在linux下项目不能够正常启动, 报 xx.hbm.xml不存在.<br>Linux下文件区分大小写，window下文件不区分大小写，譬如：</p>
+<pre><code>&lt;<span class="type">class</span> <span class="property">name</span>=<span class="string">"com.mckj.entity.QuickasProjectrepairreq"</span> table=<span class="string">"quickas_projectrepairreq"</span> catalog=<span class="string">"wyn"</span>&gt;
+</code></pre><p>如table的名称在mysql数据库中默认会为小写，windows下反向工程可能会按照驼峰生成为quickas_projectRepairReq,这样在windows下正常，在linux下就会报错了！改成小写即可~</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2014-03-16T07:06:30.000Z"><a href="/2014/03/16/singleton-pattern-in-java/">Mar 16 2014</a></time>
       
       
@@ -274,6 +323,8 @@
     <li><a href="/categories/Java/">Java</a><small>1</small></li>
   
     <li><a href="/categories/Technology/">Technology</a><small>1</small></li>
+  
+    <li><a href="/categories/java/">java</a><small>1</small></li>
   
   </ul>
 </div>

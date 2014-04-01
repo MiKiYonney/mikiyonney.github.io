@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Migration Of My Old Blog | Yonney&#39;s Blog</title>
+  <title>Summary of develop Errors | Yonney&#39;s Blog</title>
   <meta name="author" content="MiKi Yonney">
   
-  <meta name="description" content="旧博客搬迁至此
-在这里那里写技术总结，发现到最后感觉是零星点点，记账号也是一件特别麻烦的事，找回以前的博客地址，mark如下：
-Blog IN CSDN:http://write.blog.csdn.net/postlist
-Blog IN Oschina:http://my.oschina.net">
+  <meta name="description" content="在开发过程中常见的错误总结（定期更新）
+1.hibernate配置文件中大小写问题
+遇到过两次，在windows下项目能够正常启动, 在linux下项目不能够正常启动, 报 xx.hbm.xml不存在.Linux下文件区分大小写，window下文件不区分大小写，譬如：
+&lt;class name=">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="Migration Of My Old Blog"/>
+  <meta property="og:title" content="Summary of develop Errors"/>
   <meta property="og:site_name" content="Yonney&#39;s Blog"/>
 
   
@@ -67,20 +67,21 @@ Blog IN Oschina:http://my.oschina.net">
     <header>
       
         <div class="icon"></div>
-        <time datetime="2014-03-16T02:33:02.000Z"><a href="/2014/03/16/migration-of-my-old-blog/">Mar 16 2014</a></time>
+        <time datetime="2014-04-01T09:58:16.000Z"><a href="/2014/04/01/summary-of-develop-errors-/">Apr 1 2014</a></time>
       
       
   
-    <h1 class="title">Migration Of My Old Blog</h1>
+    <h1 class="title">Summary of develop Errors</h1>
   
 
     </header>
     <div class="entry">
       
-        <h2 id="旧博客搬迁至此">旧博客搬迁至此</h2>
-<p>在这里那里写技术总结，发现到最后感觉是零星点点，记账号也是一件特别麻烦的事，找回以前的博客地址，mark如下：</p>
-<p>Blog IN CSDN:<a href="http://write.blog.csdn.net/postlist" target="_blank">http://write.blog.csdn.net/postlist</a></p>
-<p>Blog IN Oschina:<a href="http://my.oschina.net/Yonney" target="_blank">http://my.oschina.net/Yonney</a></p>
+        <h2 id="在开发过程中常见的错误总结（定期更新）">在开发过程中常见的错误总结（定期更新）</h2>
+<h4 id="1-hibernate配置文件中大小写问题">1.hibernate配置文件中大小写问题</h4>
+<p>遇到过两次，在windows下项目能够正常启动, 在linux下项目不能够正常启动, 报 xx.hbm.xml不存在.<br>Linux下文件区分大小写，window下文件不区分大小写，譬如：</p>
+<pre><code>&lt;<span class="type">class</span> <span class="property">name</span>=<span class="string">"com.mckj.entity.QuickasProjectrepairreq"</span> table=<span class="string">"quickas_projectrepairreq"</span> catalog=<span class="string">"wyn"</span>&gt;
+</code></pre><p>如table的名称在mysql数据库中默认会为小写，windows下反向工程可能会按照驼峰生成为quickas_projectRepairReq,这样在windows下正常，在linux下就会报错了！改成小写即可~</p>
 
       
     </div>
@@ -89,15 +90,10 @@ Blog IN Oschina:http://my.oschina.net">
         
   
   <div class="categories">
-    <a href="/categories/Technology/">Technology</a>
+    <a href="/categories/java/">java</a>
   </div>
 
         
-  
-  <div class="tags">
-    <a href="/tags/Technology/">Technology</a>
-  </div>
-
         
       
       <div class="clearfix"></div>
