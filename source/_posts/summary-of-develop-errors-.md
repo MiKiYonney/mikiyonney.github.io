@@ -1,7 +1,7 @@
 title: Summary of develop Errors 
 date: 2014-04-01 17:58:16
 tags:
-categories: java
+categories: Java
 ---
 
 ##在开发过程中常见的错误总结（定期更新）
