@@ -9,6 +9,7 @@ categories: Db
 因为项目需要，复习下游标的使用方法！记录如下：
 
 <!-- more -->	
+
 ```
 CREATE PROCEDURE `cursor_updateAreaAndTask`()
 BEGIN

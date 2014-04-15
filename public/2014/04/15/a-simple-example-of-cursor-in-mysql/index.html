@@ -7,7 +7,7 @@
   <meta name="author" content="MiKi Yonney">
   
   <meta name="description" content="mysql中游标的使用
-因为项目需要，复习下游标的使用方法！记录如下：    CREATE PROCEDURE cursor_updateAreaAndTask()    BEGIN      declare projectId int(10);      declare hotelcode var">
+因为项目需要，复习下游标的使用方法！记录如下：">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -76,14 +76,58 @@
     <div class="entry">
       
         <h2 id="mysql中游标的使用">mysql中游标的使用</h2>
-<p>因为项目需要，复习下游标的使用方法！记录如下：<br>    CREATE PROCEDURE <code>cursor_updateAreaAndTask</code>()<br>    BEGIN<br>      declare projectId int(10);<br>      declare hotelcode varchar(7);<br>      declare areacode varchar(255);<br>      declare doneArea int;<br>      declare privilege varchar(255);<br>      declare asktoRepair varchar(255);<br>      — 更新区域的游标(所有记录都查出来)<br>        DECLARE cur_updArea CURSOR FOR<br>          (SELECT r.ProjectRepairReqID, r.Hotel,h.AreaCode,r.Privilege,r.IsValidateByUser from quickas_projectrepairreq r, quickas_hotel h WHERE r.Hotel  =  h.HotelCode );</p>
-<pre><code>  DECLARE CONTINUE <span class="operator"><span class="keyword">HANDLER</span> <span class="keyword">FOR</span> <span class="keyword">NOT</span> <span class="keyword">FOUND</span> <span class="keyword">SET</span> doneArea = <span class="number">1</span>;</span>
+<p>因为项目需要，复习下游标的使用方法！记录如下：</p>
+<a id="more"></a>    
 
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+</pre></td><td class="code"><pre><span class="operator"><span class="keyword">CREATE</span> <span class="keyword">PROCEDURE</span> <span class="string">`cursor_updateAreaAndTask`</span>()
+<span class="keyword">BEGIN</span>
+  <span class="keyword">declare</span> projectId <span class="keyword">int</span>(<span class="number">10</span>);</span>
+  declare hotelcode varchar(7);
+  declare areacode varchar(255);
+  declare doneArea int;  
+  declare privilege varchar(255);  
+  declare asktoRepair varchar(255);  
+  <span class="comment">-- 更新区域的游标(所有记录都查出来)</span>
+	DECLARE cur_updArea CURSOR FOR
+	  (<span class="operator"><span class="keyword">SELECT</span> r.ProjectRepairReqID, r.Hotel,h.AreaCode,r.Privilege,r.IsValidateByUser <span class="keyword">from</span> quickas_projectrepairreq r, quickas_hotel h <span class="keyword">WHERE</span> r.Hotel  =  h.HotelCode );</span>
+  
+  DECLARE CONTINUE <span class="operator"><span class="keyword">HANDLER</span> <span class="keyword">FOR</span> <span class="keyword">NOT</span> <span class="keyword">FOUND</span> <span class="keyword">SET</span> doneArea = <span class="number">1</span>;</span>
+ 
   open cur_updArea;  
   cur_updArea:loop
     fetch cur_updArea into projectId, hotelcode,areacode,privilege,asktoRepair;  
     if doneArea=1 then
-            leave cur_updArea;
+			leave cur_updArea;
     <span class="operator"><span class="keyword">end</span> <span class="keyword">if</span>;</span>
     <span class="operator"><span class="keyword">UPDATE</span> quickas_projectrepairreq <span class="keyword">SET</span> Area = areacode <span class="keyword">where</span> ProjectRepairReqID = projectId;</span>
      <span class="comment">-- 插入task表</span>
@@ -94,8 +138,9 @@
     <span class="operator"><span class="keyword">end</span> <span class="keyword">if</span>;</span>
   <span class="operator"><span class="keyword">end</span> LOOP cur_updArea;</span>
   close cur_updArea;  
- <span class="operator"><span class="keyword">END</span>;</span>
-</code></pre><p>—</p>
+	<span class="operator"><span class="keyword">END</span>;</span>
+</pre></td></tr></table></figure>
+
 
       
     </div>
