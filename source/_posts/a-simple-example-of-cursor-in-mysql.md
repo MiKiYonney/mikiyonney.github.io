@@ -1,5 +1,5 @@
 title: A simple example of cursor in mysql
-date: 2014-04-15 14:19:05
+date: 2014-4-15 14:36:33
 tags: [mysql,db]
 categories: Db
 ---
