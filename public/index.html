@@ -63,6 +63,71 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2014-04-15T06:19:05.000Z"><a href="/2014/04/15/a-simple-example-of-cursor-in-mysql/">Apr 15 2014</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/04/15/a-simple-example-of-cursor-in-mysql/">A simple example of cursor in mysql</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="mysql中游标的使用">mysql中游标的使用</h2>
+<p>因为项目需要，复习下游标的使用方法！记录如下：<br>    CREATE PROCEDURE <code>cursor_updateAreaAndTask</code>()<br>    BEGIN<br>      declare projectId int(10);<br>      declare hotelcode varchar(7);<br>      declare areacode varchar(255);<br>      declare doneArea int;<br>      declare privilege varchar(255);<br>      declare asktoRepair varchar(255);<br>      — 更新区域的游标(所有记录都查出来)<br>        DECLARE cur_updArea CURSOR FOR<br>          (SELECT r.ProjectRepairReqID, r.Hotel,h.AreaCode,r.Privilege,r.IsValidateByUser from quickas_projectrepairreq r, quickas_hotel h WHERE r.Hotel  =  h.HotelCode );</p>
+<pre><code>  DECLARE CONTINUE <span class="operator"><span class="keyword">HANDLER</span> <span class="keyword">FOR</span> <span class="keyword">NOT</span> <span class="keyword">FOUND</span> <span class="keyword">SET</span> doneArea = <span class="number">1</span>;</span>
+
+  open cur_updArea;  
+  cur_updArea:loop
+    fetch cur_updArea into projectId, hotelcode,areacode,privilege,asktoRepair;  
+    if doneArea=1 then
+            leave cur_updArea;
+    <span class="operator"><span class="keyword">end</span> <span class="keyword">if</span>;</span>
+    <span class="operator"><span class="keyword">UPDATE</span> quickas_projectrepairreq <span class="keyword">SET</span> Area = areacode <span class="keyword">where</span> ProjectRepairReqID = projectId;</span>
+     <span class="comment">-- 插入task表</span>
+    if privilege = '1' THEN  <span class="comment">-- 硬件问题</span>
+       <span class="operator"><span class="keyword">insert</span> <span class="keyword">INTO</span> quickas_workflow_tasks(instanceId,nodeId,roleid,<span class="string">`status`</span>,operationId,receiveTime,creatTime,handleTime,<span class="string">`logs`</span>) <span class="keyword">VALUES</span> (projectId,<span class="number">1</span>,asktoRepair,<span class="number">0</span>,<span class="number">0</span>,addDate(<span class="keyword">CURRENT_TIMESTAMP</span>, <span class="number">2</span>),<span class="keyword">CURRENT_TIMESTAMP</span>,addDate(<span class="keyword">CURRENT_TIMESTAMP</span>, <span class="number">2</span>),<span class="string">'旧工单迁移'</span>);</span>
+    ELSEIF privilege = '2' THEN  <span class="comment">-- 软件问题</span>
+      <span class="operator"><span class="keyword">insert</span> <span class="keyword">INTO</span> quickas_workflow_tasks(instanceId,nodeId,roleid,<span class="string">`status`</span>,operationId,receiveTime,creatTime,handleTime,<span class="string">`logs`</span>) <span class="keyword">VALUES</span> (projectId,<span class="number">7</span>,asktoRepair,<span class="number">0</span>,<span class="number">0</span>,addDate(<span class="keyword">CURRENT_TIMESTAMP</span>, <span class="number">2</span>),<span class="keyword">CURRENT_TIMESTAMP</span>,addDate(<span class="keyword">CURRENT_TIMESTAMP</span>, <span class="number">2</span>),<span class="string">'旧工单迁移'</span>);</span>
+    <span class="operator"><span class="keyword">end</span> <span class="keyword">if</span>;</span>
+  <span class="operator"><span class="keyword">end</span> LOOP cur_updArea;</span>
+  close cur_updArea;  
+ <span class="operator"><span class="keyword">END</span>;</span>
+</code></pre><p>—</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2014-04-12T07:19:33.000Z"><a href="/2014/04/12/sorting-algorithm-in-java/">Apr 12 2014</a></time>
       
       
@@ -370,6 +435,8 @@
     <li><a href="/categories/Android/">Android</a><small>1</small></li>
   
     <li><a href="/categories/Blog/">Blog</a><small>1</small></li>
+  
+    <li><a href="/categories/Db/">Db</a><small>1</small></li>
   
     <li><a href="/categories/Hexo/">Hexo</a><small>1</small></li>
   

@@ -3,18 +3,13 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Summary of develop Errors | Yonney&#39;s Blog</title>
+  <title>mysql | Yonney&#39;s Blog</title>
   <meta name="author" content="MiKi Yonney">
-  
-  <meta name="description" content="在开发过程中常见的错误总结（定期更新）
-1.hibernate配置文件中大小写问题
-遇到过两次，在windows下项目能够正常启动, 在linux下项目不能够正常启动, 报 xx.hbm.xml不存在.Linux下文件区分大小写，window下文件不区分大小写，譬如：
-&lt;class name=">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="Summary of develop Errors"/>
+  
   <meta property="og:site_name" content="Yonney&#39;s Blog"/>
 
   
@@ -49,66 +44,25 @@
 <div class="clearfix"></div>
 </header>
   <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+<h2 class="archive-title tag">mysql</h2>
+
+
+  <div class="archive">
     
-      <img src="">
+      <article class="post">
+        <div class="post-content">
+          <header>
+            <div class="icon"></div>
+            <time datetime="2014-04-15T06:19:05.000Z"><a href="/2014/04/15/a-simple-example-of-cursor-in-mysql/">Apr 15 2014</a></time>
+            
+              <h1 class="title"><a href="/2014/04/15/a-simple-example-of-cursor-in-mysql/">A simple example of cursor in mysql</a></h1>
+            
+          </header>
+        </div>
+      </article>
     
   </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2014-04-01T09:58:16.000Z"><a href="/2014/04/01/summary-of-develop-errors-/">Apr 1 2014</a></time>
-      
-      
-  
-    <h1 class="title">Summary of develop Errors</h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h2 id="在开发过程中常见的错误总结（定期更新）">在开发过程中常见的错误总结（定期更新）</h2>
-<h4 id="1-hibernate配置文件中大小写问题">1.hibernate配置文件中大小写问题</h4>
-<p>遇到过两次，在windows下项目能够正常启动, 在linux下项目不能够正常启动, 报 xx.hbm.xml不存在.<br>Linux下文件区分大小写，window下文件不区分大小写，譬如：</p>
-<pre><code>&lt;<span class="type">class</span> <span class="property">name</span>=<span class="string">"com.mckj.entity.QuickasProjectrepairreq"</span> table=<span class="string">"quickas_projectrepairreq"</span> catalog=<span class="string">"wyn"</span>&gt;
-</code></pre><p>如table的名称在mysql数据库中默认会为小写，windows下反向工程可能会按照驼峰生成为quickas_projectRepairReq,这样在windows下正常，在linux下就会报错了！改成小写即可~</p>
-
-      
-    </div>
-    <footer>
-      
-        
-  
-  <div class="categories">
-    <a href="/categories/Java/">Java</a>
-  </div>
-
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-<section id="comment">
-  <h1 class="title">Comments</h1>
-  <div id="disqus_thread">
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-  </div>
-</section>
-
 </div></div>
     <aside id="sidebar" class="alignright">
   <div class="search">
@@ -167,7 +121,7 @@ var disqus_shortname = 'MiKiYonney';
   var dsq = document.createElement('script');
   dsq.type = 'text/javascript';
   dsq.async = true;
-  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
 }());
 </script>
