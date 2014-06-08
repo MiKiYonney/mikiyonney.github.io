@@ -73,7 +73,7 @@ time_format: H:mm:ss
 per_page: 10
 pagination_dir: page
 
-# Disqus
+# Disqus 社会化评论disqus
 disqus_shortname: MiKiYonney
 
 #plugins
