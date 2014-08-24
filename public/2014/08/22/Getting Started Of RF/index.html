@@ -3,16 +3,16 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Projects Summary | Yonney&#39;s Blog</title>
+  <title>Getting Started Of RF | Yonney&#39;s Blog</title>
   <meta name="author" content="MiKi Yonney">
   
-  <meta name="description" content="项目总结「善以不变应万变者得天下」
-从研究生入学的第一天（2013-9-2）起加入这个项目，到目前为止（2014-5-27）大致半年的时间，如人饮水，冷暖自知，期间的各种酸甜苦辣至少让研一的生活不至于太单调无趣，现终于已接近尾声，也算给研一的生活划上圆满的句号了。还剩一个月的时间要去实习了，且行且珍惜。">
+  <meta name="description" content="Robotframework配置与入门
+Robot Framework是一个基于关键字驱动的自动化测试框架。测试用例位于HTML或者TSV(以tab分隔值)文件，使用在测试库中实现的关键词来在测试中运行程序。因为Robot Framework 是灵活和可扩展的，所以它很合适用于测试具有多种接口的复杂软件：用户接口，命令行，web service，编程接口等。">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="Projects Summary"/>
+  <meta property="og:title" content="Getting Started Of RF"/>
   <meta property="og:site_name" content="Yonney&#39;s Blog"/>
 
   
@@ -67,30 +67,49 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2014-05-21T14:29:59.000Z"><a href="/2014/05/21/projects-summary-2013.9~2014.5/">May 21 2014</a></time>
+        <time datetime="2014-08-22T03:43:40.000Z"><a href="/2014/08/22/Getting Started Of RF/">Aug 22 2014</a></time>
       
       
   
-    <h1 class="title">Projects Summary</h1>
+    <h1 class="title">Getting Started Of RF</h1>
   
 
     </header>
     <div class="entry">
       
-        <h2 id="项目总结「善以不变应万变者得天下」">项目总结「善以不变应万变者得天下」</h2>
-<p>从研究生入学的第一天（2013-9-2）起加入这个项目，到目前为止（2014-5-27）大致半年的时间，如人饮水，冷暖自知，期间的各种酸甜苦辣至少让研一的生活不至于太单调无趣，现终于已接近尾声，也算给研一的生活划上圆满的句号了。还剩一个月的时间要去实习了，且行且珍惜。<br><a id="more"></a></p>
-<p>项目我们Team主要负责维也纳酒店工程报修流程模块，也就是类似于工作流模型结合十分务必复杂的业务逻辑的实现。期间变过N次需求，提出过4种技术方案，曾为研究出实现方案后兴奋过，也曾中途没法做下去想过放弃项目，但还好后来还是挺过来了没让项目烂尾。大概自己做完项目后的心得如下：</p>
-<p><strong>一.好的设计是成功的一半。</strong></p>
-<p>针对工程报修模块，从一开始到项目结束大概提出了四套方案，前三种方案都是为了需求的设计，终于当需求在无法掌控的范围的时候，急需一个为了设计的设计才能应对变化。</p>
-<p><strong>方案一</strong>：用JBPM5.4，失败原因主要是：5.4版本的学习成本大，加上系统业务太复杂，项目需要成果交差，于是在经过一个月的研究后终于还是选择放弃了。不过，想想那一个月，整个team在研究出一点成果是的哪种喜悦之情，至今想起来还是一件很美好的事。</p>
-<p><strong>方案二</strong>：用状态机驱动，大概就是枚举出系统所有的状态，控制每种角色可见的状态，每个状态对应什么后续操作即可。这个方案一直撑到了今年的年初，后来需求“终于”又发生了变化，系统的状态已经有一百多个了，整个系统完全变得不可维护了。此外，有些节点的超时等在代码中写死了，只要需求一边就傻了，切记你永远不知道客户在想什么，所以还是写点灵活的东西来成全别人顺便轻松自己吧。</p>
-<p><strong>方案三</strong>：状态机驱动，只是在原来的表上增加了状态的转移目标，也就是角色可见什么状态，通过什么操作到达什么状态，这也是一个枚举的过程，这个方案在实行两天后就被方案四代替了，现在想想枚举真是一件很恐怖的事情。</p>
-<p><strong>方案四</strong>：也就是最终解决客户各种需求变化的方案。大致用数据库模拟了一个工作流引擎。系统可配置化，关键数据库设计为：流程类型表（workflow）+节点表(Node)+节点操作关联（nodeOperationRel）+节点角色关联(nodeRoleRel)+操作表(Operation)+任务表（tasks）。</p>
-<p><strong>二.没有技术解决不了的问题，只有想不想做的问题。</strong></p>
-<p>技术的路上总会有很多surprise，因为有些东西在你看来可能没法实现的，但是它总是能被人解决。且当它被解决时，你总会有想研究这个问题的本质所在，这就是一个驱动式学习的过程。与其总说研究生是个坑，还不如说它给了我很多自由时间，让我提升自己自学的能力，让我真真正正在一群专业的搞技术的人的熏陶下提高自己，感恩……</p>
-<p><strong>三.你不是一个人在战斗，永远要相信团队的力量。</strong></p>
-<p>团队沟通和合作很重要，我们Team有一个前端，一个算法高手，一个java后台，三个人常在群里“吐槽”，虽然有时候觉得项目很“坑”，但是感觉整个团队还是很欢乐，至少我是这样觉得的。团队合作的过程中，你总会感觉别人有多牛逼多牛逼，然后你就必须得学，以至于不会掉太远。还有有时候如果觉得一个人坚持不下去的时候，可以找朋友们谈个心^—^,因为每个人的想法都会不同，就算他们不能给你帮助，可是总会很多正能。有些事情，吐槽一下就够了，快乐的生活还得继续，唯有接受挑战，才能让自己真正的有所提升。</p>
-<p>我已经在IT这条路上渐行渐远了，既然已经渐远了，已经准备一直走下去了。无论做什么，只要能让自己有收获，有成就感，无悔于青春，我都很乐意。请叫我程序媛。</p>
+        <h2 id="Robotframework配置与入门">Robotframework配置与入门</h2>
+<p>Robot Framework是一个基于关键字驱动的自动化测试框架。测试用例位于HTML或者TSV(以tab分隔值)文件，使用在测试库中实现的关键词来在测试中运行程序。因为Robot Framework 是灵活和可扩展的，所以它很合适用于测试具有多种接口的复杂软件：用户接口，命令行，web service，编程接口等。<br><a id="more"></a></p>
+<ol>
+<li><p>安装Python&amp;&amp;配置环境变量 </p>
+<ul>
+<li><a href="https://www.python.org/downloads/" target="_blank" rel="external">下载Python</a>,请选择适合的Python版本！!</li>
+<li>环境变量配置：<br>将D:\Python27 D:\Python27\Scripts 添加到系统环境变量。<br>CMD中输入python，返回python版本则表示python环境安装成功。</li>
+</ul>
+</li>
+<li><p>Python快捷安装工具</p>
+<ul>
+<li><a href="http://peak.telecommunity.com/DevCenter/EasyInstall" target="_blank" rel="external">easy-install</a>:下载ez_setup.py后，cmd窗口→python ez_setup.py即可。</li>
+<li><a href="https://pip.pypa.io/en/latest/installing.html" target="_blank" rel="external">pip</a>:下载后py文件后，python get-pip.py或者直接easy_install pip即可。</li>
+</ul>
+</li>
+<li><p>安装<a href="https://github.com/robotframework/robotframework" target="_blank" rel="external">RobotFramework</a></p>
+<ul>
+<li>直接下载exe文件安装</li>
+<li>命令行安装：pip install robotframework 或者 下载源文件后，Python setup.py install<br>安装成功后，cmd中输入pybot —version，可看到是否安装成功。</li>
+</ul>
+</li>
+<li><p>Selenium、AutoItLibrary等各种支持库的安装方法：<br> <a href="http://rtomac.github.io/robotframework-selenium2library/doc/Selenium2Library.html" target="_blank" rel="external">Selenium2library库</a>：easy_install robotframework-selenium2library<br> <a href="http://franz-see.github.io/Robotframework-Database-Library/" target="_blank" rel="external">Robotframework-Database-Library库</a>:easy_install robotframework-databaselibrary</p>
+</li>
+<li><p>各浏览器driverserver的安装：</p>
+<ul>
+<li>将<a href="https://code.google.com/p/selenium/wiki/ChromeDriver" target="_blank" rel="external">chromedriver.exe</a>和IEDriverServer.exe放在D:\Python27或者D:\Python27\Scripts目录下,因为这两个目录已经添加到系统环境变量里面了</li>
+<li>火狐不需要装driverserver；脚本中浏览器参数不填写时默认为火狐，火狐浏览器版本支持火狐27以下</li>
+</ul>
+</li>
+<li><p>安装robot sublime的插件：<br>  <a href="https://github.com/shellderp/sublime-robot-plugin" target="_blank" rel="external">https://github.com/shellderp/sublime-robot-plugin</a></p>
+</li>
+</ol>
+<p>参考:<br>    <a href="http://blog.csdn.net/xg_1020/article/details/37595415" target="_blank" rel="external">http://blog.csdn.net/xg_1020/article/details/37595415</a><br>    <a href="http://blog.csdn.net/ren911/article/details/5576310" target="_blank" rel="external">http://blog.csdn.net/ren911/article/details/5576310</a></p>
 
       
     </div>
@@ -99,13 +118,13 @@
         
   
   <div class="categories">
-    <a href="/categories/Java/">Java</a>
+    <a href="/categories/Testing/">Testing</a>
   </div>
 
         
   
   <div class="tags">
-    <a href="/tags/Java/">Java</a>
+    <a href="/tags/Automated-Testing/">Automated Testing</a>
   </div>
 
         
