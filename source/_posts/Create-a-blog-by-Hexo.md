@@ -70,6 +70,11 @@ hexo s == hexo server
 hexo n == hexo new
 ```
 
+
+**hexo3.0报错：hexo ERROR Deployer not found: github**
+1.安装 npm install hexo-deployer-git --save
+2.将deploy 的 type由github改为git
+
 **其他参考**
 
 - [使用hexo搭建博客](http://yangjian.me/workspace/building-blog-with-hexo/)
