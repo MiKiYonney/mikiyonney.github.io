@@ -69,7 +69,7 @@ hexo d == hexo deploy
 hexo s == hexo server
 hexo n == hexo new
 ```
-
+---
 
 **hexo3.0报错：hexo ERROR Deployer not found: github**
 1.安装 npm install hexo-deployer-git --save
