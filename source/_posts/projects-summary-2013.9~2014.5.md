@@ -1,7 +1,7 @@
 title: Projects Summary 
 date: 2014-05-21 22:29:59
-tags: Java
-categories: Java
+tags: [Java,Projects]
+categories: Experience
 ---
 ##项目总结「善以不变应万变者得天下」
 

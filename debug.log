@@ -1,4 +1,4 @@
-date: 2014-06-12 21:06:18.604
+date: 2015-07-15 20:32:49.890
 argv: d:\Program Files\nodejs\node.exe c:\Users\yonney\AppData\Roaming\npm\node_modules\hexo\bin\hexo server
 os: Windows_NT 6.1.7601 win32 x64
 version:
@@ -13,167 +13,111 @@ version:
   openssl: 1.0.1e
 ---
 
-[debug] 21:03:08.752 Config file loaded
-[debug] 21:03:08.757 Version info checked successfully
-[debug] 21:03:08.818 Loading database.
-[debug] 21:03:08.939 Plugin loaded successfully: hexo-generator-feed
-[debug] 21:03:09.221 Processed: images/排序算法总结.mom
-[debug] 21:03:09.518 Processed: LICENSE
-[debug] 21:03:09.518 Processed: README.md
-[debug] 21:03:09.613 Processed: source/css/_base/layout.styl
-[debug] 21:03:09.613 Processed: source/css/_base/utils.styl
-[debug] 21:03:09.613 Processed: source/css/_base/variable.styl
-[debug] 21:03:09.613 Processed: source/css/_partial/archive.styl
-[debug] 21:03:09.613 Processed: source/css/_partial/article.styl
-[debug] 21:03:09.613 Processed: source/css/_partial/comment.styl
-[debug] 21:03:09.613 Processed: source/css/_partial/footer.styl
-[debug] 21:03:09.613 Processed: source/css/_partial/header.styl
-[debug] 21:03:09.613 Processed: source/css/_partial/index.styl
-[debug] 21:03:09.613 Processed: source/css/_partial/sidebar.styl
-[debug] 21:03:09.613 Processed: source/css/_partial/syntax.styl
-[debug] 21:03:09.747 Processed: source/fancybox/blank.gif
-[debug] 21:03:09.748 Processed: source/fancybox/fancybox_loading.gif
-[debug] 21:03:09.749 Processed: source/fancybox/fancybox_loading@2x.gif
-[debug] 21:03:09.749 Processed: source/fancybox/fancybox_overlay.png
-[debug] 21:03:09.750 Processed: source/fancybox/fancybox_sprite.png
-[debug] 21:03:09.750 Processed: source/fancybox/fancybox_sprite@2x.png
-[debug] 21:03:09.751 Processed: source/fancybox/jquery.fancybox.css
-[debug] 21:03:09.751 Processed: source/fancybox/jquery.fancybox.pack.js
-[debug] 21:03:09.752 Processed: source/js/gallery.js
-[debug] 21:03:09.752 Processed: source/js/jquery.imagesloaded.min.js
-[debug] 21:03:09.755 Processed: source/css/style.styl
-[debug] 21:03:09.773 Processed: source/css/font/fontawesome-webfont.eot
-[debug] 21:03:09.774 Processed: source/css/font/fontawesome-webfont.svg
-[debug] 21:03:09.775 Processed: source/css/font/fontawesome-webfont.ttf
-[debug] 21:03:09.783 Processed: source/css/font/fontawesome-webfont.woff
-[debug] 21:03:09.787 Processed: layout/archive.ejs
-[debug] 21:03:09.788 Processed: layout/category.ejs
-[debug] 21:03:09.788 Processed: layout/index.ejs
-[debug] 21:03:09.788 Processed: layout/layout.ejs
-[debug] 21:03:09.788 Processed: layout/page.ejs
-[debug] 21:03:09.788 Processed: layout/post.ejs
-[debug] 21:03:09.788 Processed: layout/tag.ejs
-[debug] 21:03:09.788 Processed: layout/_widget/category.ejs
-[debug] 21:03:09.789 Processed: layout/_widget/links.ejs
-[debug] 21:03:09.789 Processed: layout/_widget/recent_posts.ejs
-[debug] 21:03:09.789 Processed: layout/_widget/search.ejs
-[debug] 21:03:09.789 Processed: layout/_widget/tag.ejs
-[debug] 21:03:09.789 Processed: layout/_widget/tagcloud.ejs
-[debug] 21:03:09.789 Processed: layout/_widget/weibo.ejs
-[debug] 21:03:09.789 Processed: layout/_partial/archive.ejs
-[debug] 21:03:09.789 Processed: layout/_partial/article.ejs
-[debug] 21:03:09.789 Processed: layout/_partial/comment.ejs
-[debug] 21:03:09.789 Processed: layout/_partial/facebook_comment.ejs
-[debug] 21:03:09.789 Processed: layout/_partial/footer.ejs
-[debug] 21:03:09.789 Processed: layout/_partial/head.ejs
-[debug] 21:03:09.789 Processed: layout/_partial/header.ejs
-[debug] 21:03:09.789 Processed: layout/_partial/pagination.ejs
-[debug] 21:03:09.789 Processed: layout/_partial/sidebar.ejs
-[debug] 21:03:09.789 Processed: layout/_partial/post/category.ejs
-[debug] 21:03:09.790 Processed: layout/_partial/post/gallery.ejs
-[debug] 21:03:09.790 Processed: layout/_partial/post/share.ejs
-[debug] 21:03:09.790 Processed: layout/_partial/post/tag.ejs
-[debug] 21:03:09.790 Processed: layout/_partial/post/title.ejs
-[debug] 21:03:09.834 Theme config loaded
-[debug] 21:03:09.834 Processed: _config.yml
-[debug] 21:03:09.834 Processed: languages/de.yml
-[debug] 21:03:09.835 Processed: languages/default.yml
-[debug] 21:03:09.836 Processed: languages/ru.yml
-[debug] 21:03:09.837 Processed: languages/zh-CN.yml
-[debug] 21:03:09.838 Processed: languages/zh-TW.yml
-[debug] 21:03:09.863 Processed: _posts/Create-a-blog-by-Hexo.md
-[debug] 21:03:09.864 Processed: _posts/android-cloud-emulator.md
-[debug] 21:03:09.864 Processed: _posts/lin-hui-yin.md
-[debug] 21:03:09.864 Processed: _posts/migration-of-my-old-blog.md
-[debug] 21:03:09.864 Processed: _posts/projects-summary-2013.9~2014.5.md
-[debug] 21:03:09.864 Processed: _posts/singleton-pattern-in-java.md
-[debug] 21:03:09.864 Processed: _posts/sorting-algorithm-in-java.md
-[debug] 21:03:09.864 Processed: _posts/summary-of-develop-errors-.md
-[debug] 21:03:09.869 Processed: layout/_partial/after_footer.ejs
-[debug] 21:03:09.869 Processed: layout/_partial/google_analytics.ejs
-[debug] 21:03:09.869 Processed: layout/_partial/google_analytics - 副本.ejs
-[info] 21:03:09.978 Hexo is running at http://localhost:4000/. Press Ctrl+C to stop.
-[debug] 21:03:09.985 Cache saved
-[debug] 21:03:13.705 Render index: 
-[update] 21:03:59.625 d:\Github\githubBlog\source\_posts\lin-hui-yin.md
-[update] 21:03:59.629 d:\Github\githubBlog\source\_posts\lin-hui-yin.md
-[debug] 21:03:59.748 Processed: _posts/lin-hui-yin.md
-[debug] 21:03:59.816 Cache saved
-[debug] 21:04:01.449 Render index: 
-[debug] 21:04:09.146 Render post: 2014/06/12/lin-hui-yin/
-[update] 21:04:22.990 d:\Github\githubBlog\source\_posts\lin-hui-yin.md
-[update] 21:04:22.994 d:\Github\githubBlog\source\_posts\lin-hui-yin.md
-[debug] 21:04:23.113 Processed: _posts/lin-hui-yin.md
-[debug] 21:04:23.188 Cache saved
-[update] 21:04:28.085 d:\Github\githubBlog\source\_posts\lin-hui-yin.md
-[update] 21:04:28.088 d:\Github\githubBlog\source\_posts\lin-hui-yin.md
-[debug] 21:04:28.201 Processed: _posts/lin-hui-yin.md
-[debug] 21:04:28.270 Cache saved
-[update] 21:04:37.454 d:\Github\githubBlog\source\_posts\lin-hui-yin.md
-[update] 21:04:37.457 d:\Github\githubBlog\source\_posts\lin-hui-yin.md
-[debug] 21:04:37.573 Processed: _posts/lin-hui-yin.md
-[debug] 21:04:37.649 Cache saved
-[debug] 21:04:39.022 Render post: 2014/06/12/lin-hui-yin/
-[debug] 21:04:45.467 Render index: 
-[update] 21:05:02.097 d:\Github\githubBlog\source\_posts\lin-hui-yin.md
-[update] 21:05:02.108 d:\Github\githubBlog\source\_posts\lin-hui-yin.md
-[debug] 21:05:02.224 Processed: _posts/lin-hui-yin.md
-[debug] 21:05:02.280 Cache saved
-[update] 21:05:03.406 d:\Github\githubBlog\source\_posts\lin-hui-yin.md
-[update] 21:05:03.413 d:\Github\githubBlog\source\_posts\lin-hui-yin.md
-[debug] 21:05:03.537 Processed: _posts/lin-hui-yin.md
-[debug] 21:05:03.606 Cache saved
-[debug] 21:05:04.712 Render index: 
-[update] 21:05:16.384 d:\Github\githubBlog\source\_posts\lin-hui-yin.md
-[update] 21:05:16.393 d:\Github\githubBlog\source\_posts\lin-hui-yin.md
-[debug] 21:05:16.509 Processed: _posts/lin-hui-yin.md
-[debug] 21:05:16.564 Cache saved
-[update] 21:05:23.656 d:\Github\githubBlog\source\_posts\lin-hui-yin.md
-[update] 21:05:23.665 d:\Github\githubBlog\source\_posts\lin-hui-yin.md
-[debug] 21:05:23.798 Processed: _posts/lin-hui-yin.md
-[debug] 21:05:23.857 Cache saved
-[update] 21:05:26.873 d:\Github\githubBlog\source\_posts\lin-hui-yin.md
-[update] 21:05:26.877 d:\Github\githubBlog\source\_posts\lin-hui-yin.md
-[debug] 21:05:26.993 Processed: _posts/lin-hui-yin.md
-[debug] 21:05:27.050 Cache saved
-[update] 21:05:28.552 d:\Github\githubBlog\source\_posts\lin-hui-yin.md
-[update] 21:05:28.556 d:\Github\githubBlog\source\_posts\lin-hui-yin.md
-[debug] 21:05:28.672 Processed: _posts/lin-hui-yin.md
-[debug] 21:05:28.725 Cache saved
-[debug] 21:05:29.712 Render index: 
-[update] 21:05:38.176 d:\Github\githubBlog\source\_posts\lin-hui-yin.md
-[update] 21:05:38.187 d:\Github\githubBlog\source\_posts\lin-hui-yin.md
-[debug] 21:05:38.301 Processed: _posts/lin-hui-yin.md
-[debug] 21:05:38.356 Cache saved
-[debug] 21:05:39.286 Render index: 
-[update] 21:05:52.724 d:\Github\githubBlog\source\_posts\lin-hui-yin.md
-[update] 21:05:52.728 d:\Github\githubBlog\source\_posts\lin-hui-yin.md
-[debug] 21:05:52.841 Processed: _posts/lin-hui-yin.md
-[debug] 21:05:52.902 Cache saved
-[update] 21:05:56.569 d:\Github\githubBlog\source\_posts\lin-hui-yin.md
-[update] 21:05:56.575 d:\Github\githubBlog\source\_posts\lin-hui-yin.md
-[debug] 21:05:56.698 Processed: _posts/lin-hui-yin.md
-[debug] 21:05:56.756 Cache saved
-[update] 21:05:58.659 d:\Github\githubBlog\source\_posts\lin-hui-yin.md
-[update] 21:05:58.675 d:\Github\githubBlog\source\_posts\lin-hui-yin.md
-[debug] 21:05:58.794 Processed: _posts/lin-hui-yin.md
-[debug] 21:05:58.846 Cache saved
-[debug] 21:06:00.037 Render index: 
-[update] 21:06:11.353 d:\Github\githubBlog\source\_posts\lin-hui-yin.md
-[update] 21:06:11.356 d:\Github\githubBlog\source\_posts\lin-hui-yin.md
-[debug] 21:06:11.470 Processed: _posts/lin-hui-yin.md
-[debug] 21:06:11.521 Cache saved
-[update] 21:06:18.437 d:\Github\githubBlog\source\_posts\lin-hui-yin.md
-[update] 21:06:18.445 d:\Github\githubBlog\source\_posts\lin-hui-yin.md
-[error] 21:06:18.557 { rawMessage: 'Unable to parse.',
-  parsedLine: 1,
-  snippet: 'title:「林徽因」',
-  parsedFile: null,
-  message: 'Unable to parse.',
-  domain: 
-   { domain: null,
-     _events: { error: [Function] },
-     _maxListeners: 10,
-     members: [],
-     _disposed: true },
-  domainThrown: true }
+[debug] 20:32:48.010 Config file loaded
+[debug] 20:32:48.031 Updating package.json version
+[debug] 20:32:48.035 Hexo was just updated. Deleting old cache database.
+[debug] 20:32:48.035 Version info checked successfully
+[debug] 20:32:48.815 Plugin loaded successfully: hexo-deployer-git
+[error] 20:32:48.829 HexoError: Plugin load failed: hexo-generator-archive
+ExtendError: Generator function is not defined
+    at Generator.register (c:\Users\yonney\AppData\Roaming\npm\node_modules\hexo\lib\extend\generator.js:41:11)
+    at Object.<anonymous> (d:\workspace\mikiyonney.github.io\node_modules\hexo-generator-archive\index.js:11:23)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at c:\Users\yonney\AppData\Roaming\npm\node_modules\hexo\lib\loaders\plugins.js:29:13
+    at Array.forEach (native)
+    at c:\Users\yonney\AppData\Roaming\npm\node_modules\hexo\lib\loaders\plugins.js:25:15
+    at ReaddirReq.Req.done (c:\Users\yonney\AppData\Roaming\npm\node_modules\hexo\node_modules\graceful-fs\graceful-fs.js:144:5)
+    at ReaddirReq.done (c:\Users\yonney\AppData\Roaming\npm\node_modules\hexo\node_modules\graceful-fs\graceful-fs.js:91:22)
+    at Object.oncomplete (fs.js:107:15)
+
+[error] 20:32:48.848 HexoError: Plugin load failed: hexo-generator-category
+ExtendError: Generator function is not defined
+    at Generator.register (c:\Users\yonney\AppData\Roaming\npm\node_modules\hexo\lib\extend\generator.js:41:11)
+    at Object.<anonymous> (d:\workspace\mikiyonney.github.io\node_modules\hexo-generator-category\index.js:9:23)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at c:\Users\yonney\AppData\Roaming\npm\node_modules\hexo\lib\loaders\plugins.js:29:13
+    at Array.forEach (native)
+    at c:\Users\yonney\AppData\Roaming\npm\node_modules\hexo\lib\loaders\plugins.js:25:15
+    at ReaddirReq.Req.done (c:\Users\yonney\AppData\Roaming\npm\node_modules\hexo\node_modules\graceful-fs\graceful-fs.js:144:5)
+    at ReaddirReq.done (c:\Users\yonney\AppData\Roaming\npm\node_modules\hexo\node_modules\graceful-fs\graceful-fs.js:91:22)
+    at Object.oncomplete (fs.js:107:15)
+
+[error] 20:32:48.866 HexoError: Plugin load failed: hexo-generator-index
+ExtendError: Generator function is not defined
+    at Generator.register (c:\Users\yonney\AppData\Roaming\npm\node_modules\hexo\lib\extend\generator.js:41:11)
+    at Object.<anonymous> (d:\workspace\mikiyonney.github.io\node_modules\hexo-generator-index\index.js:9:23)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at c:\Users\yonney\AppData\Roaming\npm\node_modules\hexo\lib\loaders\plugins.js:29:13
+    at Array.forEach (native)
+    at c:\Users\yonney\AppData\Roaming\npm\node_modules\hexo\lib\loaders\plugins.js:25:15
+    at ReaddirReq.Req.done (c:\Users\yonney\AppData\Roaming\npm\node_modules\hexo\node_modules\graceful-fs\graceful-fs.js:144:5)
+    at ReaddirReq.done (c:\Users\yonney\AppData\Roaming\npm\node_modules\hexo\node_modules\graceful-fs\graceful-fs.js:91:22)
+    at Object.oncomplete (fs.js:107:15)
+
+[error] 20:32:48.882 HexoError: Plugin load failed: hexo-generator-tag
+ExtendError: Generator function is not defined
+    at Generator.register (c:\Users\yonney\AppData\Roaming\npm\node_modules\hexo\lib\extend\generator.js:41:11)
+    at Object.<anonymous> (d:\workspace\mikiyonney.github.io\node_modules\hexo-generator-tag\index.js:9:23)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at c:\Users\yonney\AppData\Roaming\npm\node_modules\hexo\lib\loaders\plugins.js:29:13
+    at Array.forEach (native)
+    at c:\Users\yonney\AppData\Roaming\npm\node_modules\hexo\lib\loaders\plugins.js:25:15
+    at ReaddirReq.Req.done (c:\Users\yonney\AppData\Roaming\npm\node_modules\hexo\node_modules\graceful-fs\graceful-fs.js:144:5)
+    at ReaddirReq.done (c:\Users\yonney\AppData\Roaming\npm\node_modules\hexo\node_modules\graceful-fs\graceful-fs.js:91:22)
+    at Object.oncomplete (fs.js:107:15)
+
+[debug] 20:32:48.924 Plugin loaded successfully: hexo-renderer-ejs
+[debug] 20:32:49.066 Plugin loaded successfully: hexo-renderer-marked
+[debug] 20:32:49.575 Plugin loaded successfully: hexo-renderer-stylus
+[error] 20:32:49.710 HexoError: Plugin load failed: hexo-server
+ExtendError: Filter type must be either pre or post
+    at Filter.register (c:\Users\yonney\AppData\Roaming\npm\node_modules\hexo\lib\extend\filter.js:54:11)
+    at Object.<anonymous> (d:\workspace\mikiyonney.github.io\node_modules\hexo-server\index.js:22:20)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at c:\Users\yonney\AppData\Roaming\npm\node_modules\hexo\lib\loaders\plugins.js:29:13
+    at Array.forEach (native)
+    at c:\Users\yonney\AppData\Roaming\npm\node_modules\hexo\lib\loaders\plugins.js:25:15
+    at ReaddirReq.Req.done (c:\Users\yonney\AppData\Roaming\npm\node_modules\hexo\node_modules\graceful-fs\graceful-fs.js:144:5)
+    at ReaddirReq.done (c:\Users\yonney\AppData\Roaming\npm\node_modules\hexo\node_modules\graceful-fs\graceful-fs.js:91:22)
+    at Object.oncomplete (fs.js:107:15)
+
+[error] 20:32:49.743 TypeError: Cannot read property 'config' of undefined
+TypeError: Cannot read property 'config' of undefined
+    at module.exports (d:\workspace\mikiyonney.github.io\node_modules\hexo-server\lib\server.js:13:20)
+    at c:\Users\yonney\AppData\Roaming\npm\node_modules\hexo\lib\core\index.js:238:9
+    at b (domain.js:183:18)
+    at Domain.run (domain.js:123:23)
+    at Hexo.call (c:\Users\yonney\AppData\Roaming\npm\node_modules\hexo\lib\core\index.js:237:9)
+    at c:\Users\yonney\AppData\Roaming\npm\node_modules\hexo\lib\init.js:59:10
+    at c:\Users\yonney\AppData\Roaming\npm\node_modules\hexo\node_modules\async\lib\async.js:142:25
+    at c:\Users\yonney\AppData\Roaming\npm\node_modules\hexo\node_modules\async\lib\async.js:232:13
+    at c:\Users\yonney\AppData\Roaming\npm\node_modules\hexo\node_modules\async\lib\async.js:142:25
+    at c:\Users\yonney\AppData\Roaming\npm\node_modules\hexo\node_modules\async\lib\async.js:229:17
+    at c:\Users\yonney\AppData\Roaming\npm\node_modules\hexo\node_modules\async\lib\async.js:556:34
+    at c:\Users\yonney\AppData\Roaming\npm\node_modules\hexo\lib\loaders\scripts.js:10:24
+    at Object.cb [as oncomplete] (fs.js:168:19)
