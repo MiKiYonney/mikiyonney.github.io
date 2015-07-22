@@ -21,127 +21,126 @@ categories: Java
 
 1.经典实现方法
 
-```
-package com.singleton;
-/**
- * 懒汉写法  缺点：没有达到lazy loading的效果
- * 金典单例实现只适用于单线程的情况，当有多个线程并发时，
- * 它们都要执行这段代码，都执行到第6行，这时 sl都为空，于是乎就会实例出多个对象了，这就违背了单例模式的思想了。
- *  * @author yonney
- */
-public class LazySingleton {
-     private static LazySingleton singleton;
-     private LazySingleton(){
-           
-     }
-     public static LazySingleton getInstance(){
-            if( singleton== null){
-                 singleton = new LazySingleton();
-           }
-            return singleton;
-     }
-}
-```
+	package com.singleton;
+	/**
+	 * 懒汉写法  缺点：没有达到lazy loading的效果
+	 * 金典单例实现只适用于单线程的情况，当有多个线程并发时，
+	 * 它们都要执行这段代码，都执行到第6行，这时 sl都为空，于是乎就会实例出多个对象了，这就违背了单例模式的思想了。
+	 *  * @author yonney
+	 */
+	public class LazySingleton {
+	     private static LazySingleton singleton;
+	     private LazySingleton(){
+	           
+	     }
+	     public static LazySingleton getInstance(){
+	            if( singleton== null){
+	                 singleton = new LazySingleton();
+	           }
+	            return singleton;
+	     }
+	}
+
 
 2.getInstance()方法上加上synchronized关键字
 
-```
-public class Singleton {
-    private static Singleton sl;
-    private Singleton() {
-    }
-    public static synchronized Singleton getInstance() {
-        if(sl == null) {
-            sl = new Singleton();
-        }
-        return sl;
-    }
-    //其他的方法
-}
-```
+
+	public class Singleton {
+	    private static Singleton sl;
+	    private Singleton() {
+	    }
+	    public static synchronized Singleton getInstance() {
+	        if(sl == null) {
+	            sl = new Singleton();
+	        }
+	        return sl;
+	    }
+	    //其他的方法
+	}
+
 
 **注意**：但是我们可以想象得到，真正需要同步的是在第一次调用时，之后就不再需要同步这个方法了。之后的每次调用，同步都会是一种累赘。程序执行的效率就会大大降低。
 
 3.恶汉写法(JVM虚拟机在加载这个类时就会立马创建此唯一的单例。)
 
-```   
-public class HungrySingleton {
-     private static HungrySingleton singleton = new HungrySingleton();
-     private HungrySingleton(){
-           
-     }
-     public static HungrySingleton getInstance(){
-            return singleton;
-     }
-}
-```
+
+	public class HungrySingleton {
+	     private static HungrySingleton singleton = new HungrySingleton();
+	     private HungrySingleton(){
+	           
+	     }
+	     public static HungrySingleton getInstance(){
+	            return singleton;
+	     }
+	}
+
 
 4.双重校验锁，在当前的内存模型中无效
 
-```
-public class LockSingleton {
-     private volatile static LockSingleton singleton;
-     private LockSingleton(){
-           
-     }
-     public static LockSingleton getInstance(){
-            if( singleton == null){
-                 synchronized (LockSingleton. class) {
-                      if( singleton == null){
-                            singleton = new LockSingleton();
-                     }
-                }
-           }
-            return singleton;
-     }
-}
-```
+
+	public class LockSingleton {
+	     private volatile static LockSingleton singleton;
+	     private LockSingleton(){
+	           
+	     }
+	     public static LockSingleton getInstance(){
+	            if( singleton == null){
+	                 synchronized (LockSingleton. class) {
+	                      if( singleton == null){
+	                            singleton = new LockSingleton();
+	                     }
+	                }
+	           }
+	            return singleton;
+	     }
+	}
+
 
 5.内部静态方法
 
-```
-/**
- * 内部静态方法  优点：加载时不会初始化静态变量INSTANCE，因为没有主动使用，达到Lazy loading
- * @author yonney
- *
- */
-public class InternalSingleton {
-     private static class SingletonHolder{
-            private final static InternalSingleton INSTANCE = new InternalSingleton();
-     }
-     private InternalSingleton(){
-           
-     }
-     public static InternalSingleton getInstance(){
-            return SingletonHolder. INSTANCE;
-     }
-}
-```
+
+	/**
+	 * 内部静态方法  优点：加载时不会初始化静态变量INSTANCE，因为没有主动使用，达到Lazy loading
+	 * @author yonney
+	 *
+	 */
+	public class InternalSingleton {
+	     private static class SingletonHolder{
+	            private final static InternalSingleton INSTANCE = new InternalSingleton();
+	     }
+	     private InternalSingleton(){
+	           
+	     }
+	     public static InternalSingleton getInstance(){
+	            return SingletonHolder. INSTANCE;
+	     }
+	}
+
     
 6.枚举实现
 
-```
-/**
- * 枚举，《Effective Java》作者推荐使用的方法，优点：不仅能避免多线程同步问题，而且还能防止反序列化重新创建新的对象
- * @author yonney
- */
-public enum EnumSingleton {
-     INSTANCE;
-     public static EnumSingleton getInstance(){
-            return INSTANCE ;
-     }
-     public Object o;
-     public Object testObject(){
-            if( o== null){
-                 return new Object();
-           }
-            return o;
-     }
-     public static void main(String args[]){
-           if(EnumSingleton. getInstance().testObject()==EnumSingleton. getInstance().testObject()){
-           }
-     }
-}
-```
+
+	/**
+	 * 枚举，《Effective Java》作者推荐使用的方法，优点：不仅能避免多线程同步问题，而且还能防止反序列化重新创建新的对象
+	 * @author yonney
+	 */
+	public enum EnumSingleton {
+	     INSTANCE;
+	     public static EnumSingleton getInstance(){
+	            return INSTANCE ;
+	     }
+	     public Object o;
+	     public Object testObject(){
+	            if( o== null){
+	                 return new Object();
+	           }
+	            return o;
+	     }
+	     public static void main(String args[]){
+	           if(EnumSingleton. getInstance().testObject()==EnumSingleton. getInstance().testObject()){
+	           }
+	     }
+	}
+
 
 ---
