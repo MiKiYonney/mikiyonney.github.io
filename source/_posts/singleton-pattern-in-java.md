@@ -74,8 +74,26 @@ categories: Java
 	     }
 	}
 
+4.ThreadLocal实现
 
-4.双重校验锁，在当前的内存模型中无效
+	/**
+	 * 使用ThreadLocal实现线程范围内的共享
+	 */
+	public class ThreadLocalSingleton {
+	    private static ThreadLocal<ThreadLocalSingleton> map = new ThreadLocal<ThreadLocalSingleton>();
+
+	    public static ThreadLocalSingleton getThreadInstance() {
+	        ThreadLocalSingleton instance = map.get();
+	        if (instance == null) {
+	            instance = new ThreadLocalSingleton();
+	            map.set(instance);
+	        }
+	        return instance;
+	    }
+	}
+
+
+5.双重校验锁，在当前的内存模型中无效
 
 
 	public class LockSingleton {
@@ -96,7 +114,7 @@ categories: Java
 	}
 
 
-5.内部静态方法
+6.内部静态方法
 
 
 	/**
@@ -117,7 +135,7 @@ categories: Java
 	}
 
     
-6.枚举实现
+7.枚举实现
 
 
 	/**
