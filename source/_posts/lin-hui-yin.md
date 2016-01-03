@@ -1,7 +1,7 @@
 title: HuiYin Lin
 date: 2014-06-12 19:25:06
-tags: 读书笔记
-categories: 札记
+tags: reading notes
+categories: Literature
 ---
 ##林徽因「一身诗意千寻瀑，万古人间四月天」
 
