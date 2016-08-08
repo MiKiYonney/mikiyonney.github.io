@@ -1,10 +1,8 @@
-title: Getting Started Of RF
+title: Robotframework配置与入门
 date: 2014-8-22 11:43:40
 tags: [Automated Testing]
 categories: Testing
 ---
-
-##Robotframework配置与入门
 
 Robot Framework是一个基于关键字驱动的自动化测试框架。测试用例位于HTML或者TSV(以tab分隔值)文件，使用在测试库中实现的关键词来在测试中运行程序。因为Robot Framework 是灵活和可扩展的，所以它很合适用于测试具有多种接口的复杂软件：用户接口，命令行，web service，编程接口等。
 <!-- more -->

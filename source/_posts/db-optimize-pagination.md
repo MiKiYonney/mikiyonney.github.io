@@ -1,10 +1,8 @@
-title: Database Optimize Of Pagenation
+title: mysql pagination optimize
 date: 2015-5-10 11:43:40
 tags: [DB Optimize]
 categories: DB
 ---
-
-## mysql分页与分页性能查询优化
 
 mysql分页就直接使用limit进行操作,limit如果我们直接不加任何处理可能数据大了就会很卡的。
 <!-- more -->
@@ -22,7 +20,7 @@ limit 10000,20的意思扫描满足条件的10020行,扔掉前面的10000行,返
 也就是说,就是越往后分页,LIMIT语句的偏移量就会越大,速度也会明显变慢。怎么解决？
 
 
-**1.“clue”, 给翻页提供一些”线索”。**
+** 1.“clue”, 给翻页提供一些”线索”。 **
 
 比如还是
 
@@ -34,7 +32,7 @@ limit 10000,20的意思扫描满足条件的10020行,扔掉前面的10000行,返
 
 不管翻多少页,每次查询只扫描20行。但是这种方法的缺点是只能提供”上一页”、”下一页”的链接形式,但是我们的产品经理非常喜欢”<上一页 1 2 3 4 5 6 7 8 9 下一页>”这样的链接方式,怎么办呢？
 
-**2.limit m,n 不可避免情况**
+** 2.limit m,n 不可避免情况 **
 
 如果LIMIT m,n不可避免的话,要优化效率,只有尽可能的让m小一下,我们扩展前面”clue”做法,还是 SELECT * FROM message ORDER BY id DESC,按id降序分页,每页20条,当前是第10页,当前页条目id最大的是9527,最小的是9500,比如要跳到第8页,SQL语句可以这样写：
 
@@ -44,7 +42,7 @@ limit 10000,20的意思扫描满足条件的10020行,扔掉前面的10000行,返
 
 	SELECT * FROM message WHERE id < 9500 ORDER BY id DESC LIMIT 40,20;
 
-**3.使用子查询来操作**
+** 3.使用子查询来操作 **
 
 子查询的分页方式来提高分页效率,可用SQL语句如下：
 
@@ -62,7 +60,7 @@ limit 10000,20的意思扫描满足条件的10020行,扔掉前面的10000行,返
 
 经过测试,使用子查询的分页方式的效率比纯LIMIT提高了14-20倍！
 
-**4. JOIN分页方式**
+** 4. JOIN分页方式 **
 
 	SELECT * FROM `content` AS t1 JOIN (SELECT id FROM `content` ORDER BY id desc LIMIT ".($page-1)*$pagesize.", 1) AS t2 WHERE t1.id <= t2.id ORDER BY t1.id desc LIMIT $pagesize;
 

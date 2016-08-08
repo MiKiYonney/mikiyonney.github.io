@@ -1,10 +1,8 @@
-title: Android Cloud Emulator
+title: Android cloud emulator
 date: 2014-01-08 14:55:34
 tags: [android Emulator]
 categories: Android
 ---
-
-##Android云端模拟器
 
 最近闲来无事弄下Android，想做个APP练练手，以前一直有这想法，只是没有实现O^O,电脑的配置实在在捉急了，昨天晚上搭好环境后第一次启动模拟器大概花了20分钟，我都不记得漫长的等待过程中的那种感受了，今天google了下云端的模拟器，觉得很赞，因为健忘所以写篇blog记录下。
 

@@ -1,12 +1,10 @@
-title: Summary of develop Errors 
+title: Summary of develop errors 
 date: 2014-04-01 17:58:16
 tags:
 categories: Java
 ---
 
-##在开发过程中常见的错误总结（定期更新）
-
-####1.hibernate配置文件中大小写问题
+### hibernate配置文件中大小写问题
 遇到过两次，在windows下项目能够正常启动, 在linux下项目不能够正常启动, 报 xx.hbm.xml不存在.
 Linux下文件区分大小写，window下文件不区分大小写，譬如：
 

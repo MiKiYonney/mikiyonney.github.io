@@ -1,10 +1,8 @@
-title: Build a blog by Hexo && Node.js
+title: hexo your blogs
 date: 2014-01-07 15:37:42
 tags: [hexo,node.js]
 categories: Hexo
 ---
-
-##用hexo+node.js搭建blog
 
 很久都没有学新东西了，三天前自己会的东西还是大学本科毕业后会的东西，在[@beforeload](http://beforeload.github.io/)的指导下搭建了算是属于自己的blog,算是更新了一下自己的知识库了吧。跟什么样的人在一起就会成为什么样的人，跟优秀的人在一起无可厚非的收获匪浅~技术更新真的很快，感觉自己目前在技术这条路上渐行渐远的节奏可能决定了以后都无法回头了，先暂且不想这些吧！踏踏实实过好每天就对了~这篇blog纯当练手用，顺便总结下自己作为新手搭的这个blog的大致步骤（虽然[hexo系列教程](http://zipperary.com/categories/hexo/)已经很多了）以及熟悉下[markdown语法](http://wowubuntu.com/markdown/)。       
 <!-- more -->
