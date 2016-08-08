@@ -1,0 +1,739 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Why
+我们要开发一个 Java 项目，为了保证编译通过，我们会到处去寻找 jar 包。当编译通过了，在运行的时候，却发现 ClassNotFoundException。还差 jar 包啊？再去找找吧。
+每个 Java 项目的目录结构都没有一个统一的标准，配置文件到处都是，单元测试代码到底应该放在哪里，没有一个权威的规范。
+可使用 Ant 做为项目构建工具，它可以自动化地完成编译、测试、打包等任务">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Maven in action">
+<meta property="og:url" content="http://mikiyonney.github.io/2015/06/09/maven-in-action/index.html">
+<meta property="og:site_name" content="Yonney's Blog">
+<meta property="og:description" content="Why
+我们要开发一个 Java 项目，为了保证编译通过，我们会到处去寻找 jar 包。当编译通过了，在运行的时候，却发现 ClassNotFoundException。还差 jar 包啊？再去找找吧。
+每个 Java 项目的目录结构都没有一个统一的标准，配置文件到处都是，单元测试代码到底应该放在哪里，没有一个权威的规范。
+可使用 Ant 做为项目构建工具，它可以自动化地完成编译、测试、打包等任务">
+<meta property="og:image" content="http://i.imgur.com/5bJJpAc.png">
+<meta property="og:image" content="http://i.imgur.com/CmvwMUI.png">
+<meta property="og:updated_time" content="2016-08-08T10:06:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Maven in action">
+<meta name="twitter:description" content="Why
+我们要开发一个 Java 项目，为了保证编译通过，我们会到处去寻找 jar 包。当编译通过了，在运行的时候，却发现 ClassNotFoundException。还差 jar 包啊？再去找找吧。
+每个 Java 项目的目录结构都没有一个统一的标准，配置文件到处都是，单元测试代码到底应该放在哪里，没有一个权威的规范。
+可使用 Ant 做为项目构建工具，它可以自动化地完成编译、测试、打包等任务">
+<meta name="twitter:image" content="http://i.imgur.com/5bJJpAc.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Maven in action | Yonney's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Yonney's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">越努力才会越幸运</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Maven in action
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-06-09T14:34:43+08:00" content="2015-06-09">
+              2015-06-09
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Why"><a href="#Why" class="headerlink" title="Why"></a>Why</h1><ol>
+<li>我们要开发一个 Java 项目，为了保证编译通过，我们会到处去寻找 jar 包。当编译通过了，在运行的时候，却发现 ClassNotFoundException。还差 jar 包啊？再去找找吧。</li>
+<li>每个 Java 项目的目录结构都没有一个统一的标准，配置文件到处都是，单元测试代码到底应该放在哪里，没有一个权威的规范。</li>
+<li>可使用 Ant 做为项目构建工具，它可以自动化地完成编译、测试、打包等任务，确实为我们省了不少事儿，但编写 Ant 的 XML 脚本绝非是一件轻松的事情。<a id="more"></a>
+</li>
+</ol>
+<h1 id="What"><a href="#What" class="headerlink" title="What"></a>What</h1><p>Maven是一个项目管理工具，它包含了一个项目对象模型 (Project Object Model)，一组标准集合，一个项目生命周期(ProjectLifecycle)，一个依赖管理系统(Dependency Management System)，和用来运行定义在生命周期阶段(phase)中插件(plugin)目标(goal)的逻辑。</p>
+<p>统一开发规范与工具+统一管理 jar 包</p>
+<h1 id="How"><a href="#How" class="headerlink" title="How"></a>How</h1><ol>
+<li><p>mvn安装</p>
+<ul>
+<li>M2_HOME = D:/tool/maven</li>
+<li>MAVEN_OPTS = -Xms128m -Xmx512m</li>
+</ul>
+</li>
+<li><p>mvn安装文件目录</p>
+</li>
+<li>mvn命令初体验<br> maven archetype:generate<br> mvn clean comilie, mvn clean test,mvn clean package,mvn clean install<br> mvn archetype:create -DgroupId=com.alibaba.maven.plugins -DartifactId=greeting-maven-plugin -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeArtifactId=maven-archetype-mojo  </li>
+<li>mvn项目结构解析—”约定由于配置”、Pom.xml</li>
+</ol>
+<h1 id="Maven深入理解"><a href="#Maven深入理解" class="headerlink" title="Maven深入理解"></a>Maven深入理解</h1><ol>
+<li>仓库</li>
+<li>坐标和依赖</li>
+<li>生命周期和插件</li>
+<li>聚合与继承</li>
+</ol>
+<h2 id="仓库"><a href="#仓库" class="headerlink" title="仓库"></a>仓库</h2><h2 id="坐标"><a href="#坐标" class="headerlink" title="坐标"></a>坐标</h2><p>坐标是Maven构件的唯一标识。坐标由<strong>groupId、artifactId、version、packaging、classifier</strong>构成。</p>
+<ul>
+<li>groupId：组织的实际项目名，建议使用组织的域名反向+项目名称，如org.apache.maven.plugins。</li>
+<li>artifactId：Maven项目（模块）名，建议使用实际项目名作为模块的前缀，如maven-compiler-plugin。</li>
+<li>version：Maven项目的版本。版本号约定为&lt;主版本&gt;.&lt;次版本&gt;.&lt;增量版本&gt;-&lt;里程碑版本&gt;，如1.2.3-beta-1。Maven还定义了SNAPSHOT快照版本，用于持续更新发布。</li>
+<li>packaging：Maven项目的打包方式，通常与生成的构件的扩展名对应，如jar，war。默认为jar。</li>
+<li>classifier：用于帮助定义构建输出的一些附属构件。常见的使用场景如针对不同JDK版本（如jdk5）。</li>
+</ul>
+<p>坐标的5个元素中，groupId、artifactId、version是必须指定的，packaging可选（默认为jar），classifier是不能直接定义的（由辅助的插件帮助生成）。</p>
+<p>Maven构建出的文件的文件名一般为：<strong>artifactId-version[-classifier].packaging</strong>。</p>
+<h2 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h2><p>依赖的解决实际是Maven在classpath中添加相应的包。Maven项目的依赖由pom.xml中的<dependency>元素设置。dependency元素中常用的子元素包括：</dependency></p>
+<ul>
+<li>groupId、artifactId、version：依赖的基本坐标。</li>
+<li>type：依赖的类型，对应于坐标的packaging。一般无需声明，默认为jar。</li>
+<li>scope：依赖的范围。</li>
+<li>optional：是否为可选依赖。</li>
+<li>exclusions：用于排除传递性依赖。</li>
+</ul>
+<h3 id="依赖范围"><a href="#依赖范围" class="headerlink" title="依赖范围"></a>依赖范围</h3><p><img src="http://i.imgur.com/5bJJpAc.png" alt="依赖范围"></p>
+<h3 id="传递性依赖"><a href="#传递性依赖" class="headerlink" title="传递性依赖"></a>传递性依赖</h3><p>项目声明依赖构件A，而A声明依赖构件B，则项目对构件B有传递性依赖。项目只需声明直接依赖，Maven会通过传递性依赖机制自动处理间接依赖。</p>
+<p>依赖范围对传递性依赖有影响：<br><img src="http://i.imgur.com/CmvwMUI.png" alt="传递依赖"></p>
+<h3 id="依赖调解"><a href="#依赖调解" class="headerlink" title="依赖调解"></a>依赖调解</h3><p>依赖调解用于解决依赖的冲突。例如项目依赖了构件A、B，A和B都间接依赖了X，但A依赖了X的1.0版本，B依赖了X的2.0版本，则产生了依赖冲突。</p>
+<p><strong> Maven依赖调解的原则： </strong></p>
+<ol>
+<li>最短路径优先：传递的路径短者优先。如A对X的1.0版本的依赖路径为A -&gt; C -&gt; X（1.0），B对X的2.0版本的依赖路径为B -&gt; D -&gt; E -&gt; X（2.0），由于X 1.0的路径长度（2） &lt; X 2.0的路径长度（3），则最终依赖为X 1.0。</li>
+<li>先声明者优先：如果路径相同，则使用声明在前的依赖。</li>
+</ol>
+<h3 id="可选依赖"><a href="#可选依赖" class="headerlink" title="可选依赖"></a>可选依赖</h3><p>如果依赖的optional元素设置为true，则不会产生传递性依赖。如项目A依赖B，B依赖X（可选），则A不依赖于X。</p>
+<p>可选依赖的使用场景一般为某个构件提供了多种实现，需根据情况显式选择一种。例如提供了基于Oracle、MySQL等多种持久层实现时，根据采用的数据库选择对应的实现。</p>
+<h3 id="排除依赖"><a href="#排除依赖" class="headerlink" title="排除依赖"></a>排除依赖</h3><p>排除依赖显式的解除某传递性依赖。一般用于替换某传递性依赖的版本。例如A依赖B，B依赖X的版本1.0。可将B对X的依赖通过exclusion元素排除，然后显式指定A依赖X的1.0.1版本（此场景虽然可以通过依赖调解实现，但通过显式指定使用的版本看起来更清晰）。</p>
+<p>exclusion元素中只需groupId和artifactId即可，无需version元素。</p>
+<h2 id="生命周期和插件"><a href="#生命周期和插件" class="headerlink" title="生命周期和插件"></a>生命周期和插件</h2><h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><p>Maven为项目的构建过程抽象了统一的生命周期，涵盖了项目的所有构建步骤。</p>
+<p>Maven内置了3套相互独立的生命周期：clean、default、site，每个周期又分为多个阶段（phase）。周期的阶段是有顺序的，后边的阶段的执行依赖之前的阶段，即执行后边阶段时Maven会自动依次执行之前的阶段。</p>
+<h3 id="clean生命周期"><a href="#clean生命周期" class="headerlink" title="clean生命周期"></a>clean生命周期</h3><p>clean生命周期主要做清理项目的工作。</p>
+<pre><code>pre-clean
+clean
+post-clean
+</code></pre><h3 id="default生命周期"><a href="#default生命周期" class="headerlink" title="default生命周期"></a>default生命周期</h3><p>default生命周期定义了真正构建时需要执行的所有步骤。</p>
+<pre><code>validate
+initialize
+generate-sources
+process-sources
+generate-resources
+process-resources
+compile
+process-classes
+generate-test-sources
+generate-test-resources
+process-test-resources
+test-compile
+process-test-classes
+test
+prepare-package
+package
+pre-integration-test
+integration-test
+post-integration-test
+verify
+install
+deploy
+</code></pre><h3 id="site生命周期"><a href="#site生命周期" class="headerlink" title="site生命周期"></a>site生命周期</h3><p>site生命周期用于建立和发布项目站点。</p>
+<pre><code>pre-site
+site
+post-site
+site-deploy
+</code></pre><h3 id="命令行与生命周期"><a href="#命令行与生命周期" class="headerlink" title="命令行与生命周期"></a>命令行与生命周期</h3><p>常用的Maven命令实际调用了Maven的生命周期阶段。如：</p>
+<ul>
+<li>$mvn clean命令：调用clean生命周期的clean阶段（实际执行pre-clean和clean阶段）</li>
+<li>$mvn test命令：调用default生命周期的test阶段（实际执行validate-&gt;test的所有阶段）</li>
+<li>$mvn clean install命令：调用clean生命周期的clean阶段 + default生命周期的install阶段</li>
+<li>$mvn clean deploy site-deploy命令：调用clean生命周期的clean阶段 + default生命周期的deploy阶段 + site生命周期的site-deploy阶段</li>
+</ul>
+<h2 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h2><p>Maven的核心仅仅定义了抽象的生命周期，而实际的功能是通过插件实现的。插件以独立的Maven构件的形式存在，在需要时Maven自动从仓库下载。每个Maven的插件实现一类功能，每个功能是一个插件目标（Goal）。</p>
+<p>Maven插件的目标需要与指定的生命周期的阶段相绑定，用以完成具体的构建任务。</p>
+<h3 id="内置绑定"><a href="#内置绑定" class="headerlink" title="内置绑定"></a>内置绑定</h3><p>Maven内置了很多绑定，从而默认可以执行大部分的构建功能：</p>
+<p>clean生命周期：</p>
+<pre><code>clean阶段    maven-clean-plugin:clean
+</code></pre><p>default生命周期：</p>
+<pre><code>process-resources阶段    maven-resources-plugin:resources
+compile阶段    maven-compiler-plugin:compile
+process-test-resources阶段    maven-resources-plugin:testResources
+test-compile阶段    maven-compiler-plugin:testCompile
+test阶段    maven-surefire-plugin:test
+package阶段    maven-jar-plugin:jar
+install阶段    maven-install-plugin:install
+deploy阶段    maven-deploy-plugin:deploy
+</code></pre><p>site生命周期：    </p>
+<pre><code>site阶段    maven-site-plugin:site
+site-deploy阶段    maven-site-plugin:deploy
+</code></pre><h3 id="自定义绑定"><a href="#自定义绑定" class="headerlink" title="自定义绑定"></a>自定义绑定</h3><p>除内置绑定外，可以通过plugin元素中的execution子元素自行将某插件目标绑定到生命周期的某个阶段，从而完成自定义功能。</p>
+<p>例如下述配置将maven-source-plugin:jar-no-fork目标绑定在package阶段，构建生成源代码包。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">    &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;</div><div class="line">    &lt;artifactId&gt;maven-source-plugin&lt;/artifactId&gt;</div><div class="line">    &lt;version&gt;2.1.2&lt;/version&gt;</div><div class="line">    &lt;executions&gt;</div><div class="line">        &lt;execution&gt;</div><div class="line">            &lt;id&gt;attach-sources&lt;/id&gt;</div><div class="line">            &lt;phase&gt;package&lt;/phase&gt;</div><div class="line">            &lt;goals&gt;</div><div class="line">                &lt;goal&gt;jar-no-fork&lt;/goal&gt;</div><div class="line">            &lt;/goals&gt;</div><div class="line">        &lt;/execution&gt;</div><div class="line">    &lt;/executions&gt;</div><div class="line">&lt;/plugin&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="从命令行调用插件目标"><a href="#从命令行调用插件目标" class="headerlink" title="从命令行调用插件目标"></a>从命令行调用插件目标</h3><p>有些插件目标不适合绑定在生命周期阶段上（例如maven-help-plugin的describe目标），因此Maven支持在命令行调用插件目标。</p>
+<p>Maven调用插件目标的格式为：</p>
+<p><strong>$mvn 插件groupId:插件artifactId:插件version:插件goal</strong></p>
+<p>例如：$mvn org.apache.maven.plugins:maven-dependency-plugin:2.1:tree</p>
+<p>但插件的坐标比较长，不易记忆，因此Maven引入了插件前缀的概念，例如dependency是maven-dependency-plugin的前缀，上述命令可以简化为$mvn dependency:tree。</p>
+<p>注：实际上插件前缀只对应到插件的artifactId。Maven会根据仓库元数据（maven-metadata.xml）信息及内置规则解析到对应的groupId、artifactId、version，从而定位到唯一的插件。</p>
+<h2 id="聚合与继承"><a href="#聚合与继承" class="headerlink" title="聚合与继承"></a>聚合与继承</h2><h3 id="聚合"><a href="#聚合" class="headerlink" title="聚合"></a>聚合</h3><p>较大的Maven项目一般会被拆分成多个模块（例如springframework分为spring-core、spring-context等）。如果每次构建整个项目时都需要依次构建多个模块就显得十分不便。Maven通过聚合模块将一组模块进行统一管理。</p>
+<p>聚合模块只有一个pom.xml文件，且坐标中的packaging元素固定为pom。被聚合模块管理的其他模块通过modules元素声明：</p>
+<pre><code>&lt;modules&gt;
+    &lt;module&gt;module-1&lt;/module&gt;
+    &lt;module&gt;module-2&lt;/module&gt;
+&lt;/modules&gt;
+</code></pre><p>聚合模块一般为主从结构，即被聚合的模块作为聚合模块的子目录存储。但此要求不是必须的，也可以将聚合模块与被聚合模块平级存储，这时需要注意修改module元素中的路径：</p>
+<pre><code>&lt;modules&gt;
+    &lt;module&gt;../module-1&lt;/module&gt;
+    &lt;module&gt;../module-2&lt;/module&gt;
+&lt;/modules&gt;
+</code></pre><p>定义了聚合模块之后，就可以通过聚合模块对其包含的所有模块统一进行构建操作了。</p>
+<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><p>继承的目的主要是消除重复。例如模块A和模块B都包含单元测试，那么两个模块都需要定义junit依赖，造成了重复。可以将junit依赖声明在统一的父模块中，模块A和B都继承自父模块，自身就无需定义junit依赖了。</p>
+<p>父模块只有一个pom.xml文件，且坐标中的packaging元素固定为pom。在子模块中通过parent元素声明继承关系：</p>
+<pre><code>&lt;parent&gt;
+    &lt;artifactId&gt;project&lt;/artifactId&gt;
+    &lt;groupId&gt;com.company&lt;/groupId&gt;
+    &lt;version&gt;1.0.0-SNAPSHOT&lt;/version&gt;
+&lt;/parent&gt;
+</code></pre><p>需要注意的是，Maven默认父模块和子模块的目录结构为主从关系，即父模块在子模块的上一级目录。如果设定为平行关系，需要在parent元素中通过relativePath元素声明：</p>
+<pre><code>&lt;parent&gt;
+    &lt;artifactId&gt;project&lt;/artifactId&gt;
+    &lt;groupId&gt;com.company&lt;/groupId&gt;
+    &lt;version&gt;1.0.0-SNAPSHOT&lt;/version&gt;
+    &lt;relativePath&gt;../parent/pom.xml&lt;/relativePath&gt;
+&lt;/parent&gt;
+</code></pre><p>Maven的聚合模块和继承模块在概念上是独立的，但在表现形式上很相似。因此实际项目中可以将聚合模块和继承模块合二为一。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/05/10/db-optimize-pagination/" rel="next" title="mysql pagination optimize">
+                <i class="fa fa-chevron-left"></i> mysql pagination optimize
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/07/15/innership-experience-in-dianping/" rel="prev" title="Innership Experience In Dianping">
+                Innership Experience In Dianping <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="MiKi Yonney" />
+          <p class="site-author-name" itemprop="name">MiKi Yonney</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Why"><span class="nav-number">1.</span> <span class="nav-text">Why</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#What"><span class="nav-number">2.</span> <span class="nav-text">What</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#How"><span class="nav-number">3.</span> <span class="nav-text">How</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Maven深入理解"><span class="nav-number">4.</span> <span class="nav-text">Maven深入理解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#仓库"><span class="nav-number">4.1.</span> <span class="nav-text">仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#坐标"><span class="nav-number">4.2.</span> <span class="nav-text">坐标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#依赖"><span class="nav-number">4.3.</span> <span class="nav-text">依赖</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#依赖范围"><span class="nav-number">4.3.1.</span> <span class="nav-text">依赖范围</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#传递性依赖"><span class="nav-number">4.3.2.</span> <span class="nav-text">传递性依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#依赖调解"><span class="nav-number">4.3.3.</span> <span class="nav-text">依赖调解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可选依赖"><span class="nav-number">4.3.4.</span> <span class="nav-text">可选依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#排除依赖"><span class="nav-number">4.3.5.</span> <span class="nav-text">排除依赖</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生命周期和插件"><span class="nav-number">4.4.</span> <span class="nav-text">生命周期和插件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#生命周期"><span class="nav-number">4.4.1.</span> <span class="nav-text">生命周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#clean生命周期"><span class="nav-number">4.4.2.</span> <span class="nav-text">clean生命周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#default生命周期"><span class="nav-number">4.4.3.</span> <span class="nav-text">default生命周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#site生命周期"><span class="nav-number">4.4.4.</span> <span class="nav-text">site生命周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令行与生命周期"><span class="nav-number">4.4.5.</span> <span class="nav-text">命令行与生命周期</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插件"><span class="nav-number">4.5.</span> <span class="nav-text">插件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#内置绑定"><span class="nav-number">4.5.1.</span> <span class="nav-text">内置绑定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义绑定"><span class="nav-number">4.5.2.</span> <span class="nav-text">自定义绑定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#从命令行调用插件目标"><span class="nav-number">4.5.3.</span> <span class="nav-text">从命令行调用插件目标</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#聚合与继承"><span class="nav-number">4.6.</span> <span class="nav-text">聚合与继承</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#聚合"><span class="nav-number">4.6.1.</span> <span class="nav-text">聚合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#继承"><span class="nav-number">4.6.2.</span> <span class="nav-text">继承</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MiKi Yonney</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

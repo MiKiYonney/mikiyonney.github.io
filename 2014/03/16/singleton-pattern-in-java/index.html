@@ -1,0 +1,699 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Design Pattern," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="为什么要用单例模式当一个类需要用来管理共享资源的时候，我们就只需要一个对象，比方说：线程池、缓存、日志对象等。如果说制造出了多个实例，就会导致许多问题的产生，例如：程序异常，资源使用过量，结果不一致等。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Singleton Pattern In JAVA">
+<meta property="og:url" content="http://mikiyonney.github.io/2014/03/16/singleton-pattern-in-java/index.html">
+<meta property="og:site_name" content="Yonney's Blog">
+<meta property="og:description" content="为什么要用单例模式当一个类需要用来管理共享资源的时候，我们就只需要一个对象，比方说：线程池、缓存、日志对象等。如果说制造出了多个实例，就会导致许多问题的产生，例如：程序异常，资源使用过量，结果不一致等。">
+<meta property="og:updated_time" content="2016-08-08T11:25:51.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Singleton Pattern In JAVA">
+<meta name="twitter:description" content="为什么要用单例模式当一个类需要用来管理共享资源的时候，我们就只需要一个对象，比方说：线程池、缓存、日志对象等。如果说制造出了多个实例，就会导致许多问题的产生，例如：程序异常，资源使用过量，结果不一致等。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Singleton Pattern In JAVA | Yonney's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Yonney's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">越努力才会越幸运</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Singleton Pattern In JAVA
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-03-16T15:06:30+08:00" content="2014-03-16">
+              2014-03-16
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="为什么要用单例模式"><a href="#为什么要用单例模式" class="headerlink" title="为什么要用单例模式"></a>为什么要用单例模式</h3><p>当一个类需要用来管理共享资源的时候，我们就只需要一个对象，比方说：线程池、缓存、日志对象等。如果说制造出了多个实例，就会导致许多问题的产生，例如：程序异常，资源使用过量，结果不一致等。<a id="more"></a></p>
+<h2 id="Java实现单例思想"><a href="#Java实现单例思想" class="headerlink" title="Java实现单例思想"></a>Java实现单例思想</h2><ol>
+<li>私有构造函数 → 其他类不能实例化一个新的对象。</li>
+<li>私有化引用 → 不能进行外部修改。</li>
+<li>公有静态方法是唯一可以获得对象的方式。</li>
+</ol>
+<h3 id="实现方法"><a href="#实现方法" class="headerlink" title="实现方法"></a>实现方法</h3><h4 id="经典实现方法"><a href="#经典实现方法" class="headerlink" title="经典实现方法"></a>经典实现方法</h4><pre><code>package com.singleton;
+/**
+ * 懒汉写法  缺点：没有达到lazy loading的效果
+ * 金典单例实现只适用于单线程的情况，当有多个线程并发时，
+ * 它们都要执行这段代码，都执行到第6行，这时 sl都为空，于是乎就会实例出多个对象了，这就违背了单例模式的思想了。
+ *  * @author yonney
+ */
+public class LazySingleton {
+     private static LazySingleton singleton;
+     private LazySingleton(){
+
+     }
+     public static LazySingleton getInstance(){
+            if( singleton== null){
+                 singleton = new LazySingleton();
+           }
+            return singleton;
+     }
+}
+</code></pre><h4 id="getInstance-方法上加上synchronized关键字"><a href="#getInstance-方法上加上synchronized关键字" class="headerlink" title="getInstance()方法上加上synchronized关键字"></a>getInstance()方法上加上synchronized关键字</h4><pre><code>public class Singleton {
+    private static Singleton sl;
+    private Singleton() {
+    }
+    public static synchronized Singleton getInstance() {
+        if(sl == null) {
+            sl = new Singleton();
+        }
+        return sl;
+    }
+    //其他的方法
+}
+</code></pre><p><strong>注意</strong>：但是我们可以想象得到，真正需要同步的是在第一次调用时，之后就不再需要同步这个方法了。之后的每次调用，同步都会是一种累赘。程序执行的效率就会大大降低。</p>
+<h4 id="恶汉写法-JVM虚拟机在加载这个类时就会立马创建此唯一的单例。"><a href="#恶汉写法-JVM虚拟机在加载这个类时就会立马创建此唯一的单例。" class="headerlink" title="恶汉写法(JVM虚拟机在加载这个类时就会立马创建此唯一的单例。)"></a>恶汉写法(JVM虚拟机在加载这个类时就会立马创建此唯一的单例。)</h4><pre><code>public class HungrySingleton {
+     private static HungrySingleton singleton = new HungrySingleton();
+     private HungrySingleton(){
+
+     }
+     public static HungrySingleton getInstance(){
+            return singleton;
+     }
+}
+</code></pre><h4 id="ThreadLocal实现"><a href="#ThreadLocal实现" class="headerlink" title="ThreadLocal实现"></a>ThreadLocal实现</h4><pre><code>/**
+ * 使用ThreadLocal实现线程范围内的共享
+ */
+public class ThreadLocalSingleton {
+    private static ThreadLocal&lt;ThreadLocalSingleton&gt; map = new ThreadLocal&lt;ThreadLocalSingleton&gt;();
+
+    public static ThreadLocalSingleton getThreadInstance() {
+        ThreadLocalSingleton instance = map.get();
+        if (instance == null) {
+            instance = new ThreadLocalSingleton();
+            map.set(instance);
+        }
+        return instance;
+    }
+}
+</code></pre><h4 id="双重校验锁，在当前的内存模型中无效"><a href="#双重校验锁，在当前的内存模型中无效" class="headerlink" title="双重校验锁，在当前的内存模型中无效"></a>双重校验锁，在当前的内存模型中无效</h4><pre><code>public class LockSingleton {
+     private volatile static LockSingleton singleton;
+     private LockSingleton(){
+
+     }
+     public static LockSingleton getInstance(){
+            if( singleton == null){
+                 synchronized (LockSingleton. class) {
+                      if( singleton == null){
+                            singleton = new LockSingleton();
+                     }
+                }
+           }
+            return singleton;
+     }
+}
+</code></pre><h4 id="内部静态方法"><a href="#内部静态方法" class="headerlink" title="内部静态方法"></a>内部静态方法</h4><pre><code>/**
+ * 内部静态方法  优点：加载时不会初始化静态变量INSTANCE，因为没有主动使用，达到Lazy loading
+ * @author yonney
+ *
+ */
+public class InternalSingleton {
+     private static class SingletonHolder{
+            private final static InternalSingleton INSTANCE = new InternalSingleton();
+     }
+     private InternalSingleton(){
+
+     }
+     public static InternalSingleton getInstance(){
+            return SingletonHolder. INSTANCE;
+     }
+}
+</code></pre><h4 id="枚举实现"><a href="#枚举实现" class="headerlink" title="枚举实现"></a>枚举实现</h4><pre><code>/**
+ * 枚举，《Effective Java》作者推荐使用的方法，优点：不仅能避免多线程同步问题，而且还能防止反序列化重新创建新的对象
+ * @author yonney
+ */
+public enum EnumSingleton {
+     INSTANCE;
+     public static EnumSingleton getInstance(){
+            return INSTANCE ;
+     }
+     public Object o;
+     public Object testObject(){
+            if( o== null){
+                 return new Object();
+           }
+            return o;
+     }
+     public static void main(String args[]){
+           if(EnumSingleton. getInstance().testObject()==EnumSingleton. getInstance().testObject()){
+           }
+     }
+}
+</code></pre><hr>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Design-Pattern/" rel="tag">#Design Pattern</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/01/08/android-cloud-emulator/" rel="next" title="Android cloud emulator">
+                <i class="fa fa-chevron-left"></i> Android cloud emulator
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/04/01/summary-of-develop-errors-/" rel="prev" title="Summary of develop errors">
+                Summary of develop errors <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="MiKi Yonney" />
+          <p class="site-author-name" itemprop="name">MiKi Yonney</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么要用单例模式"><span class="nav-number">1.</span> <span class="nav-text">为什么要用单例模式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java实现单例思想"><span class="nav-number"></span> <span class="nav-text">Java实现单例思想</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实现方法"><span class="nav-number">1.</span> <span class="nav-text">实现方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#经典实现方法"><span class="nav-number">1.1.</span> <span class="nav-text">经典实现方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#getInstance-方法上加上synchronized关键字"><span class="nav-number">1.2.</span> <span class="nav-text">getInstance()方法上加上synchronized关键字</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#恶汉写法-JVM虚拟机在加载这个类时就会立马创建此唯一的单例。"><span class="nav-number">1.3.</span> <span class="nav-text">恶汉写法(JVM虚拟机在加载这个类时就会立马创建此唯一的单例。)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ThreadLocal实现"><span class="nav-number">1.4.</span> <span class="nav-text">ThreadLocal实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#双重校验锁，在当前的内存模型中无效"><span class="nav-number">1.5.</span> <span class="nav-text">双重校验锁，在当前的内存模型中无效</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内部静态方法"><span class="nav-number">1.6.</span> <span class="nav-text">内部静态方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#枚举实现"><span class="nav-number">1.7.</span> <span class="nav-text">枚举实现</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MiKi Yonney</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,611 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="android Emulator," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="最近闲来无事弄下Android，想做个APP练练手，以前一直有这想法，只是没有实现O^O,电脑的配置实在在捉急了，昨天晚上搭好环境后第一次启动模拟器大概花了20分钟，我都不记得漫长的等待过程中的那种感受了，今天google了下云端的模拟器，觉得很赞，因为健忘所以写篇blog记录下。
+大致研究了两个Cloud Emulator： manymo和genymotion">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android cloud emulator">
+<meta property="og:url" content="http://mikiyonney.github.io/2014/01/08/android-cloud-emulator/index.html">
+<meta property="og:site_name" content="Yonney's Blog">
+<meta property="og:description" content="最近闲来无事弄下Android，想做个APP练练手，以前一直有这想法，只是没有实现O^O,电脑的配置实在在捉急了，昨天晚上搭好环境后第一次启动模拟器大概花了20分钟，我都不记得漫长的等待过程中的那种感受了，今天google了下云端的模拟器，觉得很赞，因为健忘所以写篇blog记录下。
+大致研究了两个Cloud Emulator： manymo和genymotion">
+<meta property="og:updated_time" content="2016-08-08T10:07:52.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android cloud emulator">
+<meta name="twitter:description" content="最近闲来无事弄下Android，想做个APP练练手，以前一直有这想法，只是没有实现O^O,电脑的配置实在在捉急了，昨天晚上搭好环境后第一次启动模拟器大概花了20分钟，我都不记得漫长的等待过程中的那种感受了，今天google了下云端的模拟器，觉得很赞，因为健忘所以写篇blog记录下。
+大致研究了两个Cloud Emulator： manymo和genymotion">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Android cloud emulator | Yonney's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Yonney's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">越努力才会越幸运</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Android cloud emulator
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-01-08T14:55:34+08:00" content="2014-01-08">
+              2014-01-08
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>最近闲来无事弄下Android，想做个APP练练手，以前一直有这想法，只是没有实现O^O,电脑的配置实在在捉急了，昨天晚上搭好环境后第一次启动模拟器大概花了20分钟，我都不记得漫长的等待过程中的那种感受了，今天google了下云端的模拟器，觉得很赞，因为健忘所以写篇blog记录下。</p>
+<p>大致研究了两个Cloud Emulator： <a href="https://www.manymo.com/" target="_blank" rel="external">manymo</a>和<a href="http://www.genymotion.com/" target="_blank" rel="external">genymotion</a></p>
+<a id="more"></a>
+<p>1.先note genymotion,因为这个是成功了的。<br>Step1:<a href="http://www.genymotion.com/" target="_blank" rel="external">注册genymotion账号</a></p>
+<p>Step2:<a href="https://cloud.genymotion.com/page/launchpad/download/" target="_blank" rel="external">下载Genymotion安装包</a></p>
+<p>Step3:安装，按指示傻瓜式安装就好了。</p>
+<p>成功之后，进入Genymotion，add,用Genymotion登录，选择一个device点击next就好。</p>
+<p>Step4:在eclipse中安装genymotion插件。</p>
+<p>(1).在线安装：启动Eclipse，Help-&gt;Install New Software…-&gt;Add,输入：Name: Genymobile   Location: <a href="http://plugins.genymotion.com/eclipse" target="_blank" rel="external">http://plugins.genymotion.com/eclipse</a></p>
+<p>(2).手动安装：<a href="https://cloud.genymotion.com/page/launchpad/download/" target="_blank" rel="external">下载Eclipse插件</a>,将下载好的插件jar文件放到你eclipse安装目录下的plugins目录下，然后启动eclipse.</p>
+<p>在eclipse中ctrl+6启动该插件，首次使用时要指定Genymotion安装目录和SDK目录</p>
+<p>2.manymo：速度还不错，在浏览器中运行还比较流畅，但是不知道为什么电脑一直配置没成功，于是才转向了genymotion。下面只是是配置笔记~有成功的欢迎分享。</p>
+<p>在Eclipse中配置ManyMo：</p>
+<p>(1).<a href="https://www.manymo.com/ManymoSetup.exe" target="_blank" rel="external">installation manymo program</a></p>
+<p>(2).Authentication Token：Win+R→cmd→输入：manymo token</p>
+<p>(3).Android SDK Platform Tools配置，下载<a href="http://developer.android.com/sdk/index.html" target="_blank" rel="external">Android SDK</a>后配置path,path:E:\android\adt-bundle-windows-x86-20131030\sdk\platform-tools</p>
+<p>(4)模拟器本地化：</p>
+<p>访问<a href="https://www.manymo.com/" target="_blank" rel="external">manymo</a>，点击develop，copy:manymo tunnel w3d.manymo.com:5556:jCYdPc3 ,在cmd中执行（不知道为什么我在这儿就报错了，一直没解决，然后我就转向了genymotion了）</p>
+<p>关闭tunnel：manymo shutdown SERIALNUMBER </p>
+<p>查看正在运行的device:adb devices</p>
+<p>(5).在eclipse中，在创建的android项目上，点run configuration→选择Target→ Deployment Target Selection Mode：Always prompt to pick device→close</p>
+<p>Last:开始develop吧，虽然很多人说java不好-_-!</p>
+<p>参考：</p>
+<p><a href="http://blog.csdn.net/henren555/article/details/9700027" target="_blank" rel="external">Android模拟器Genymotion安装向导</a></p>
+<p><a href="http://my.oschina.net/ryanhoo/blog/141824" target="_blank" rel="external">快到极致的Android模拟器——Genymotion</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/android-Emulator/" rel="tag">#android Emulator</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/01/07/Create-a-blog-by-Hexo/" rel="next" title="hexo your blogs">
+                <i class="fa fa-chevron-left"></i> hexo your blogs
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/03/16/singleton-pattern-in-java/" rel="prev" title="Singleton Pattern In JAVA">
+                Singleton Pattern In JAVA <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="MiKi Yonney" />
+          <p class="site-author-name" itemprop="name">MiKi Yonney</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MiKi Yonney</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
