@@ -271,6 +271,13 @@
 
           
             
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/05/10/db-optimize-pagination/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/05/10/db-optimize-pagination/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -343,6 +350,27 @@
     <div>
       
         
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div>你来了,就很好。我知道一般人是不会点的，但万一你奏不是一般人呢？</div>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat_pay.jpg" alt="MiKi Yonney WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay.png" alt="MiKi Yonney Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
 
       
     </div>
@@ -396,6 +424,10 @@
           
   <div class="comments" id="comments">
     
+      <div class="ds-thread" data-thread-key="2015/05/10/db-optimize-pagination/"
+           data-title="mysql pagination optimize" data-url="http://mikiyonney.github.io/2015/05/10/db-optimize-pagination/">
+      </div>
+    
   </div>
 
 
@@ -430,7 +462,7 @@
       <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="https://avatars2.githubusercontent.com/u/5563162?v=3&s=460"
+               src="/images/logo.jpeg"
                alt="MiKi Yonney" />
           <p class="site-author-name" itemprop="name">MiKi Yonney</p>
           <p class="site-description motion-element" itemprop="description"></p>
@@ -605,9 +637,28 @@
 
   
 
+  
+    
+  
 
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"mikiyonney"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
 
   
+    
+  
+
+
 
 
 
