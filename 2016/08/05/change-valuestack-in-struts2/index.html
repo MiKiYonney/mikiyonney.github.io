@@ -84,16 +84,16 @@
 
 
 
-<meta name="description" content="还没写完">
+<meta name="description" content="最近写了写了一个Struts2的拦截器，拦截器的目标是为了对所有请求返回的实体中的字符串的字段进行处理，譬如这个字符串中如果包含了敏感词，给字符串中的这个词凭借一个样式。自定义拦截器如下：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Change valuestack in struts2">
 <meta property="og:url" content="http://mikiyonney.github.io/2016/08/05/change-valuestack-in-struts2/index.html">
 <meta property="og:site_name" content="Yonney's Blog">
-<meta property="og:description" content="还没写完">
-<meta property="og:updated_time" content="2016-08-08T09:52:40.000Z">
+<meta property="og:description" content="最近写了写了一个Struts2的拦截器，拦截器的目标是为了对所有请求返回的实体中的字符串的字段进行处理，譬如这个字符串中如果包含了敏感词，给字符串中的这个词凭借一个样式。自定义拦截器如下：">
+<meta property="og:updated_time" content="2016-08-09T02:07:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Change valuestack in struts2">
-<meta name="twitter:description" content="还没写完">
+<meta name="twitter:description" content="最近写了写了一个Struts2的拦截器，拦截器的目标是为了对所有请求返回的实体中的字符串的字段进行处理，譬如这个字符串中如果包含了敏感词，给字符串中的这个词凭借一个样式。自定义拦截器如下：">
 
 
 
@@ -290,7 +290,72 @@
       
 
       
-        <p><strong> <center>还没写完</center> </strong></p>
+        <p>最近写了写了一个Struts2的拦截器，拦截器的目标是为了对所有请求返回的实体中的字符串的字段进行处理，譬如这个字符串中如果包含了敏感词，给字符串中的这个词凭借一个样式。自定义拦截器如下：<br><a id="more"></a></p>
+<pre><code>public class MyCheckInterceptor extends AbstractInterceptor {
+private static final Logger logger = LoggerFactory.getLogger(MyCheckInterceptor.class);
+private static final String COMMON_RESP_NAME = &quot;resp&quot;;
+
+@Autowired
+private AICheckBizHelper aiCheckBiz;
+
+@Override
+public String intercept(ActionInvocation actionInvocation) throws Exception {
+    try {
+         Object action = actionInvocation.getAction();
+         if (!(action instanceof SomeAction)) {
+             return;
+         }
+         ValueStack valueStack = actionInvocation.getStack();
+         Object respObj = valueStack.findValue(COMMON_RESP_NAME);
+
+         if (respObj instanceof JoyPageWebDTO) {
+             PageWebDTO pageWebDTO = (PageWebDTO) respObj;
+             List&lt;?&gt; recordsList = pageWebDTO.getRecords();
+             if (CollectionUtils.isNotEmpty(recordsList)) {
+                 Map&lt;String, String&gt; keyword2HintMsgMap = mapKeyword2RuleResultDTO(recordsList);
+                 if (keyword2HintMsgMap.keySet().isEmpty()) {
+                     return;
+                 }
+                 aiCheckBiz.setFieldData(recordsList, keyword2HintMsgMap);
+             }
+         }
+     } catch (Exception e) {
+         logger.error(&quot;MyCheckInterceptor error&quot;, e);
+     }
+   }
+    return actionInvocation.invoke();
+}
+</code></pre><p>自定义拦截器的配置如下：</p>
+<pre><code>&lt;package name=&quot;ajax&quot; namespace=&quot;/ajax&quot; extends=&quot;json-default&quot;&gt;
+&lt;interceptors&gt;
+    &lt;interceptor name=&quot;check&quot; class=&quot;interceptor.MyCheckInterceptor&quot;&gt;&lt;/interceptor&gt;
+    &lt;interceptor-stack name=&quot;defaultInterceptorStack&quot;&gt;
+        &lt;interceptor-ref name=&quot;check&quot; /&gt;
+        &lt;interceptor-ref name=&quot;defaultStack&quot; /&gt;
+    &lt;/interceptor-stack&gt;
+&lt;/interceptors&gt;
+&lt;default-interceptor-ref name=&quot;defaultInterceptorStack&quot;/&gt;
+
+&lt;action name=&quot;search&quot; class=&quot;com.action.SearchAction&quot;&gt;
+    &lt;result type=&quot;json&quot;&gt;
+        &lt;param name=&quot;root&quot;&gt;resp&lt;/param&gt;
+    &lt;/result&gt;
+&lt;/action&gt;
+</code></pre><p> </p>
+<p> 然而，我发现，valuestack中的值一直不被改变。后来看了一下Struts2的源码实现，得知我这样处理的valueStack中的对象是被序列化之后的，修改的是原valueStack的一个拷贝。可以使用PreResultListener，在valuestack序列化之前对valuestack中的值进行处理。使用方法：</p>
+<pre><code> public class MyInterceptor extends AbstractInterceptor {
+   ...
+    public String intercept(ActionInvocation invocation) throws Exception {
+       invocation.addPreResultListener(new PreResultListener() {
+            public void beforeResult(ActionInvocation invocation, 
+                                     String resultCode) {
+                // perform operation necessary before Result execution
+            }
+       });
+    }
+   ...
+}
+</code></pre><p>大功告成。</p>
 
       
     </div>

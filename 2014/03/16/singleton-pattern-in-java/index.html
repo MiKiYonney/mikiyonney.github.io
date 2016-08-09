@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://mikiyonney.github.io/2014/03/16/singleton-pattern-in-java/index.html">
 <meta property="og:site_name" content="Yonney's Blog">
 <meta property="og:description" content="为什么要用单例模式当一个类需要用来管理共享资源的时候，我们就只需要一个对象，比方说：线程池、缓存、日志对象等。如果说制造出了多个实例，就会导致许多问题的产生，例如：程序异常，资源使用过量，结果不一致等。">
-<meta property="og:updated_time" content="2016-08-08T13:05:57.000Z">
+<meta property="og:updated_time" content="2016-08-09T01:43:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Singleton Pattern In JAVA">
 <meta name="twitter:description" content="为什么要用单例模式当一个类需要用来管理共享资源的时候，我们就只需要一个对象，比方说：线程池、缓存、日志对象等。如果说制造出了多个实例，就会导致许多问题的产生，例如：程序异常，资源使用过量，结果不一致等。">
@@ -291,7 +291,7 @@
 
       
         <h3 id="为什么要用单例模式"><a href="#为什么要用单例模式" class="headerlink" title="为什么要用单例模式"></a>为什么要用单例模式</h3><p>当一个类需要用来管理共享资源的时候，我们就只需要一个对象，比方说：线程池、缓存、日志对象等。如果说制造出了多个实例，就会导致许多问题的产生，例如：程序异常，资源使用过量，结果不一致等。<a id="more"></a></p>
-<h2 id="Java实现单例思想"><a href="#Java实现单例思想" class="headerlink" title="Java实现单例思想"></a>Java实现单例思想</h2><ol>
+<h3 id="Java实现单例思想"><a href="#Java实现单例思想" class="headerlink" title="Java实现单例思想"></a>Java实现单例思想</h3><ol>
 <li>私有构造函数 → 其他类不能实例化一个新的对象。</li>
 <li>私有化引用 → 不能进行外部修改。</li>
 <li>公有静态方法是唯一可以获得对象的方式。</li>
@@ -560,7 +560,7 @@ public enum EnumSingleton {
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么要用单例模式"><span class="nav-number">1.</span> <span class="nav-text">为什么要用单例模式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java实现单例思想"><span class="nav-number"></span> <span class="nav-text">Java实现单例思想</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实现方法"><span class="nav-number">1.</span> <span class="nav-text">实现方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#经典实现方法"><span class="nav-number">1.1.</span> <span class="nav-text">经典实现方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#getInstance-方法上加上synchronized关键字"><span class="nav-number">1.2.</span> <span class="nav-text">getInstance()方法上加上synchronized关键字</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#恶汉写法-JVM虚拟机在加载这个类时就会立马创建此唯一的单例。"><span class="nav-number">1.3.</span> <span class="nav-text">恶汉写法(JVM虚拟机在加载这个类时就会立马创建此唯一的单例。)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ThreadLocal实现"><span class="nav-number">1.4.</span> <span class="nav-text">ThreadLocal实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#双重校验锁，在当前的内存模型中无效"><span class="nav-number">1.5.</span> <span class="nav-text">双重校验锁，在当前的内存模型中无效</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内部静态方法"><span class="nav-number">1.6.</span> <span class="nav-text">内部静态方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#枚举实现"><span class="nav-number">1.7.</span> <span class="nav-text">枚举实现</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么要用单例模式"><span class="nav-number">1.</span> <span class="nav-text">为什么要用单例模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java实现单例思想"><span class="nav-number">2.</span> <span class="nav-text">Java实现单例思想</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现方法"><span class="nav-number">3.</span> <span class="nav-text">实现方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#经典实现方法"><span class="nav-number">3.1.</span> <span class="nav-text">经典实现方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#getInstance-方法上加上synchronized关键字"><span class="nav-number">3.2.</span> <span class="nav-text">getInstance()方法上加上synchronized关键字</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#恶汉写法-JVM虚拟机在加载这个类时就会立马创建此唯一的单例。"><span class="nav-number">3.3.</span> <span class="nav-text">恶汉写法(JVM虚拟机在加载这个类时就会立马创建此唯一的单例。)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ThreadLocal实现"><span class="nav-number">3.4.</span> <span class="nav-text">ThreadLocal实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#双重校验锁，在当前的内存模型中无效"><span class="nav-number">3.5.</span> <span class="nav-text">双重校验锁，在当前的内存模型中无效</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内部静态方法"><span class="nav-number">3.6.</span> <span class="nav-text">内部静态方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#枚举实现"><span class="nav-number">3.7.</span> <span class="nav-text">枚举实现</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
