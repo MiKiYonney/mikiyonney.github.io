@@ -219,7 +219,7 @@ auto_excerpt:
   #description: ex. subscribe to my blog by scanning my public wechat account
 
 #donate
-reward_comment: 你来了,就很好。我知道一般人是不会点的，但万一你奏不是一般人呢？
+reward_comment: 点我点我！
 wechatpay: /images/wechat_pay.jpg
 alipay: /images/alipay.png
 
