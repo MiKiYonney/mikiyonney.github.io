@@ -16,7 +16,7 @@
                 var rTop = Math.ceil(Math.random() * $(document).height()),
                     rLeft = Math.ceil(Math.random() * ($(document).width() - 50)),
                     rSize = Math.ceil(Math.random() * (37 - 14) + 14);
-                $("<span class='temp'></span>").html(food).hide().css({
+                $("<span class="temp"></span>").html(food).hide().css({
                     "top": rTop,
                     "left": rLeft,
                     "color": "rgba(0,0,0,." + Math.random() + ")",

@@ -230,6 +230,128 @@
             
               
                 
+                <a class="post-title-link" href="/2014/04/01/summary-of-develop-errors-/" itemprop="url">
+                  Summary of develop errors
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-04-01T17:58:16+08:00" content="2014-04-01">
+              2014-04-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/04/01/summary-of-develop-errors-/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/04/01/summary-of-develop-errors-/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="hibernate配置文件中大小写问题"><a href="#hibernate配置文件中大小写问题" class="headerlink" title="hibernate配置文件中大小写问题"></a>hibernate配置文件中大小写问题</h3><p>遇到过两次，在windows下项目能够正常启动, 在linux下项目不能够正常启动, 报 xx.hbm.xml不存在.<br>Linux下文件区分大小写，window下文件不区分大小写，譬如：</p>
+<pre><code>&lt;class name=&quot;com.mckj.entity.QuickasProjectrepairreq&quot; table=&quot;quickas_projectrepairreq&quot; catalog=&quot;wyn&quot;&gt;
+</code></pre><p>如table的名称在mysql数据库中默认会为小写，windows下反向工程可能会按照驼峰生成为quickas_projectRepairReq,这样在windows下正常，在linux下就会报错了！改成小写即可~</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2014/03/16/singleton-pattern-in-java/" itemprop="url">
                   Singleton Pattern In JAVA
                 </a>
@@ -621,7 +743,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/">
-              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-count">14</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -675,7 +797,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
